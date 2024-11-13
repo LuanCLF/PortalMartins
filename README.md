@@ -19,7 +19,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 ## Requisitos
 ### 1. Requisitos Funcionais
 
-|  RF  |        Título        |                                       Descrição                                        |
+|    |        Título        |                                       Descrição                                        |
 | :--: | :------------------: | :------------------------------------------------------------------------------------: |
 | RF01 | Cadastro de Usuários | Permitir que moradores e proprietários de estabelecimentos criem contas na plataforma. |
 | RF02 | Publicação de Posts  |   Funcionalidade para usuários cadastrarem seus restaurantes, hospedagens ou eventos   |
@@ -28,7 +28,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 | RF05 |    Gerenciamento     |   Área para que os usuários possam gerenciar seus posts (criar, atualizar, deletar)    |
 
 ### 2. Requisitos Não Funcionais
-|  RF   |     Título     |                                                                               Descrição                                                                                |
+|     |     Título     |                                                                               Descrição                                                                                |
 | :---: | :------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | RNF01 |  Usabilidade   |                                          Plataforma deve ser intuitiva e de fácil navegação para usuários de todas as idades                                           |
 | RNF02 |   Mobilidade   |                                        Design responsivo para acesso em diferentes dispositivos (desktop, tablets, smartphones)                                        |
