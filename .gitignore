@@ -1,0 +1,1947 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+
+# Backup & report files
+*.bak
+*.swp
+*.tmp
+*.pdb
+*.mdb
+*.opendb
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# ASP.NET Temporary files
+.vscode/
+.vs/
+.vscode-test/
+
+# ASP.NET Packages
+packages/
+*.nupkg
+*.snupkg
+
+# ASP.NET Publish
+publish/
+*.Publish.xml
+*.PublishSettings
+
+# ASP.NET User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# ASP.NET Environment files
+.env
+.env.*
+
+# ASP.NET Configuration files
+appsettings.json
+appsettings.*.json
+
+# Rider
+.idea/
+.idea/*
+
+# JetBrains Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# Rider
+.idea

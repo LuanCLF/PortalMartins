@@ -1,8 +1,11 @@
 # PortalMartins
 Desenvolvimento de uma Plataforma Integrada de Informações Locais para Fomentar o Turismo e a Economia
 
+1. [Projeto]
+- 1.1 [Requisitos]
+- 1.2 [Implementação]
+- 1.3 [Imagens]
 
-Desenvolvimento de uma Plataforma Integrada de Informações Locais para Fomentar o Turismo e a Economia
 
 ### [ODS](https://brasil.un.org/pt-br/sdgs)
  - Trabalho decente e crescimento econômico
@@ -16,8 +19,10 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 
 - **Promover a colaboração com a comunidade**: Incentivar proprietários de estabelecimentos e moradores a compartilhar informações relevantes, como seus estabelecimentos e detalhes sobre eventos locais.
 
-## Requisitos
-### 1. Requisitos Funcionais
+## Projeto
+
+### Requisitos
+#### 1. Requisitos Funcionais
 
 |  RF  |        Título        |                                       Descrição                                        |
 | :--: | :------------------: | :------------------------------------------------------------------------------------: |
@@ -27,7 +32,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 | RF04 |      Avaliação       |            Permitir que usuários avaliem posts por classificação (estrelas)            |
 | RF05 |    Gerenciamento     |   Área para que os usuários possam gerenciar seus posts (criar, atualizar, deletar)    |
 
-### 2. Requisitos Não Funcionais
+#### 2. Requisitos Não Funcionais
 |  RF   |     Título     |                                                                               Descrição                                                                                |
 | :---: | :------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | RNF01 |  Usabilidade   |                                          Plataforma deve ser intuitiva e de fácil navegação para usuários de todas as idades                                           |
@@ -38,7 +43,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 | RNF06 | Acessibilidade | Garantir que a plataforma esteja em conformidade com as diretrizes de acessibilidade, permitindo que pessoas com deficiências possam utilizar todas as funcionalidades |
 
 
-## Implementação
+### Implementação
 
 |      Área      |         Ferramenta          |
 | :------------: | :-------------------------: |
@@ -48,3 +53,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 |     Cache      |            Redis            |
 
 
+### Imagens
+
+![ARCHITECTURE](ARCHITECTURE.jpeg)
+![RELATIONSHIP](RELATIONSHIP.jpeg)
