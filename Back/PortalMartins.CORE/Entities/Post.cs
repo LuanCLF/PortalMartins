@@ -50,6 +50,14 @@ namespace PortalMartins.CORE.Entities
         public DateTime UpdatedAt { get; set; }
         public DateTime DeletedAt { get; set; }
 
+        public void AddImage(string path)
+        {
+            Images = [.. Images, path];
+        }
+        public void DeleteImage(string path)
+        {
+            Images = Images.Where(i => i != path).ToArray();
+        }
         protected void Update(
            string? title,
            string? location,

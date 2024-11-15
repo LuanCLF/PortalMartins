@@ -1,15 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using PortalMartins.CORE.Entities;
 using PortalMartins.CORE.Interfaces;
 using PortalMartins.INFRA.Context;
 
 namespace PortalMartins.INFRA.Repositories
 {
-    public sealed class PostRepository(AppDBContext context, ILogger<PostRepository> logger, CancellationToken cancellationToken = default) : IPostRepository
+    public sealed class PostRepository(AppDBContext context, CancellationToken cancellationToken = default) : IPostRepository
     {
         private readonly AppDBContext _context = context;
-        private readonly ILogger<PostRepository> _logger = logger;
         private readonly CancellationToken _cancellationToken = cancellationToken;
 
         public async Task<Post?> Get(int id)

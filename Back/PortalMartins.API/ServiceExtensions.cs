@@ -12,6 +12,7 @@ namespace PortalMartins.API
         {
             services.AddScoped<IEncryptor, Encryptor>();
             services.AddScoped<IAuthenticator, Authenticator>();
+            services.AddScoped<IImage, Image>();
         }
 
         public static void AuthenticatorConfiguration(this IServiceCollection services, IConfiguration configuration)
