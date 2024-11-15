@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalMartins.API", "PortalMartins.API\PortalMartins.API.csproj", "{4F49B689-3C80-4E0E-BC5C-B78383D495C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalMartins.API", "PortalMartins.API\PortalMartins.API.csproj", "{4F49B689-3C80-4E0E-BC5C-B78383D495C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalMartins.APP", "PortalMartins.APP\PortalMartins.APP.csproj", "{1609ABDC-5697-405B-83C6-AACECBA85F1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalMartins.INFRA", "PortalMartins.INFRA\PortalMartins.INFRA.csproj", "{ADE890A1-DD9D-4FB2-A30E-C0F4AE6D9829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalMartins.INFRA", "PortalMartins.INFRA\PortalMartins.INFRA.csproj", "{ADE890A1-DD9D-4FB2-A30E-C0F4AE6D9829}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalMartins.CORE", "PortalMartins.CORE\PortalMartins.CORE.csproj", "{43CC34C1-382A-460C-981E-BDCE972E017E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalMartins.CORE", "PortalMartins.CORE\PortalMartins.CORE.csproj", "{43CC34C1-382A-460C-981E-BDCE972E017E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{4F49B689-3C80-4E0E-BC5C-B78383D495C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F49B689-3C80-4E0E-BC5C-B78383D495C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F49B689-3C80-4E0E-BC5C-B78383D495C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1609ABDC-5697-405B-83C6-AACECBA85F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1609ABDC-5697-405B-83C6-AACECBA85F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1609ABDC-5697-405B-83C6-AACECBA85F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1609ABDC-5697-405B-83C6-AACECBA85F1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADE890A1-DD9D-4FB2-A30E-C0F4AE6D9829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADE890A1-DD9D-4FB2-A30E-C0F4AE6D9829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE890A1-DD9D-4FB2-A30E-C0F4AE6D9829}.Release|Any CPU.ActiveCfg = Release|Any CPU
