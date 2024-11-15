@@ -55,5 +55,5 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 
 ### Imagens
 
-![ARCHITECTURE](ARCHITECTURE.jpeg)
-![RELATIONSHIP](RELATIONSHIP.jpeg)
+![ARCHITECTURE](ARCHITECTURE.jpeg){ width=450 }
+![RELATIONSHIP](RELATIONSHIP.jpeg){ width=450 }
