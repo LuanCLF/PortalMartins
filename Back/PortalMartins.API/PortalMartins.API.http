@@ -4,3 +4,4 @@ GET {{PortalMartins.API_HostAddress}}/get/hostings
 Accept: application/json
 
 ###
+        

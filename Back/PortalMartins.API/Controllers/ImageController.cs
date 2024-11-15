@@ -17,7 +17,7 @@ namespace PortalMartins.API.Controllers
         private readonly IPostRepository _postRepository = postRepository;
 
         [Authorize]
-        [HttpPost("/image/upload")]
+        [HttpPost("/upload/user/image")]
         [EndpointSummary("Upload an image to a post")]
         public async Task<ActionResult> Upload([FromForm] ImageDto.Upload im)
         {
@@ -57,7 +57,7 @@ namespace PortalMartins.API.Controllers
         }
 
         [Authorize]
-        [HttpDelete("/image/delete")]
+        [HttpDelete("/delete/user/image")]
         [EndpointSummary("Delete an image from a post")]
         public async Task<ActionResult> Delete([FromBody] ImageDto.Delete dl)
         {

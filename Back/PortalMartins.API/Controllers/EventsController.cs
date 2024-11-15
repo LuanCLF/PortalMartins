@@ -49,7 +49,7 @@ namespace PortalMartins.API.Controllers
         }
 
         [Authorize]
-        [HttpPost("/create/user/events")]
+        [HttpPost("/create/user/event")]
         [EndpointSummary("Registers an event post")]
         public async Task<ActionResult> Create([FromBody] EventsDto.ECreateRequest cr)
         {
@@ -111,7 +111,7 @@ namespace PortalMartins.API.Controllers
         }
 
         [Authorize]
-        [HttpPatch("/update/user/events")]
+        [HttpPatch("/update/user/event")]
         [EndpointSummary("Updates a event post")]
         public async Task<ActionResult> Update([FromBody] EventsDto.EUpdateRequest up)
         {
@@ -139,7 +139,7 @@ namespace PortalMartins.API.Controllers
         }
 
         [Authorize]
-        [HttpDelete("/delete/user/events/{id}")]
+        [HttpDelete("/delete/user/event/{id}")]
         [EndpointSummary("Delete event from user")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {

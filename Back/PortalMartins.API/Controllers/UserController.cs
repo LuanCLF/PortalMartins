@@ -16,6 +16,24 @@ namespace PortalMartins.API.Controllers
         private readonly IEncryptor _encryptor = encryptor;
         private readonly IUserRepository _userRepository = userRepository;
 
+        [HttpGet("/users")]
+        [EndpointSummary("Get users")]
+        public async Task<ActionResult> GetAllUsers()
+        {
+            try
+            {
+                List<User> users = await _userRepository.GetAll();
+
+                List<UserDto.UGetAllResponse> usersDto = users.Select(u => new UserDto.UGetAllResponse(u.Name, u.CameFrom, u.WhatIsIt, u.CreatedAt, u.UpdatedAt)).ToList();
+
+                return StatusCode(200, usersDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost("/create")]
         [EndpointSummary("Registers a user")]
         public async Task<ActionResult> Create([FromBody] UserDto.UCreateRequest cr )
@@ -58,27 +76,9 @@ namespace PortalMartins.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-            
-        [HttpGet("/users")]
-        [EndpointSummary("Get users")]
-        public async Task<ActionResult> GetAllUsers()
-        {
-            try
-            {
-                List<User> users = await _userRepository.GetAll();
-
-                List<UserDto.UGetAllResponse> usersDto = users.Select(u => new UserDto.UGetAllResponse(u.Name, u.CreatedAt)).ToList();
-
-                return StatusCode(200, usersDto);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
 
         [Authorize]
-        [HttpPatch("/update")]
+        [HttpPatch("/update/user")]
         [EndpointSummary("Update user")]
         public async Task<ActionResult> Update([FromBody] UserDto.UUpdateRequest up)
         {
@@ -101,7 +101,7 @@ namespace PortalMartins.API.Controllers
         }
 
         [Authorize]
-        [HttpDelete("/Delete")]
+        [HttpDelete("/delete/user")]
         [EndpointSummary("Delete user")]
         public async Task<ActionResult> Delete([FromBody] UserDto.UDeleteRequest del)
         {

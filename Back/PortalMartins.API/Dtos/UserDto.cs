@@ -1,7 +1,16 @@
-﻿namespace PortalMartins.API.Dtos
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace PortalMartins.API.Dtos
 {
     public class UserDto
     {
+        public record UGetAllResponse(
+            string Name,
+            string CameFrom,
+            string WhatIsIt,
+            DateTime CreatedAt,
+            DateTime UpdatedAt
+            );
         public record UCreateRequest(
             string Name, 
             string Email,
@@ -19,11 +28,6 @@
             string Name, 
             string Email, 
             string Token, 
-            DateTime CreatedAt
-            );
-
-        public record UGetAllResponse(
-            string Name,
             DateTime CreatedAt
             );
 
