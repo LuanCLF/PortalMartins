@@ -92,16 +92,17 @@ A aplicação é voltada para a cidade de **Martins - RN** e adjacências, atend
 ## **Imagens**
 
 ### Arquitetura do Sistema  
-![Arquitetura do Sistema](ARCHITECTURE.jpeg){width=150}
+<img src="ARCHITECTURE.jpeg" alt="Arquitetura do Sistema" height="500">
 
 ### Relacionamento entre Entidades  
-![Relacionamento entre Entidades](RELATIONSHIP.jpeg){width=150} 
+<img src="RELATIONSHIP.jpeg" alt="Relacionamento entre Entidades" height="500">
+
 
 ---
 
-## API
+## **API**
 
-### USER
+### **USER**
 
 #### /users 
 response(
@@ -136,9 +137,9 @@ response(
 
 #### /update/user
 request(
-	string Name, 
-	string Email, 
-	string Password
+	string? Name, 
+	string? Email, 
+	string? Password
 ) => body
 
 #### /delete/user
@@ -148,7 +149,7 @@ request(
 
 ---
 
-### HOSTING
+### **HOSTING**
 
 #### /get/hostings
 response(
@@ -225,7 +226,7 @@ request(
 
 ---
 
-### FEEDING
+### **FEEDING**
 
 #### /get/feedings
 response(
@@ -294,7 +295,7 @@ request(
 
 ---
 
-### EVENT
+### **EVENT**
 
 #### /get/events
 response(
@@ -355,7 +356,7 @@ request(
 
 ---
 
-### IMAGE
+### **IMAGE**
 
 #### /upload/user/image
 request(
