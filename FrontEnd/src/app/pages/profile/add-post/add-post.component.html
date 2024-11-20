@@ -1,0 +1,392 @@
+<button
+  type="button"
+  class="btn-post-add-page customBtn btnAct"
+  (click)="openModal()"
+>
+  Adicionar
+</button>
+
+<div
+  class="modal"
+  [class.show]="isModalOpen"
+  (click)="onModalClick($event)"
+  (keypress)="onModalClick($event)"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">
+          {{
+            postType === "hosting"
+              ? "Hospedagem"
+              : postType === "feeding"
+              ? "Estabelecimento"
+              : "Evento"
+          }}
+        </h1>
+        <button type="button" class="close-btn" (click)="closeModal()">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        @if(postType === 'hosting') {
+        <form [formGroup]="hostForm" (ngSubmit)="onSubmit()">
+          <div>
+            <div>
+              <label for="title">Título:</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                placeholder="Título do post"
+                required
+              />
+              <span class="messageErrorOff" id="invalidhostingtitle"
+                >Min 3 letras, max 50 letras</span
+              >
+            </div>
+            <div>
+              <label for="location">Localização:</label>
+              <input
+                type="text"
+                id="location"
+                formControlName="location"
+                placeholder="Cidade-UF"
+                required
+              />
+              <span class="messageErrorOff" id="invalidhostinglocation"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="whatsApp">WhatsApp:</label>
+              <input
+                type="text"
+                id="whatsApp"
+                formControlName="whatsApp"
+                placeholder="Número ou Link"
+              />
+              <span class="messageErrorOff" id="invalidhostingwhatsapp"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="instagram">Instagram:</label>
+              <input
+                type="text"
+                id="instagram"
+                formControlName="instagram"
+                placeholder="@perfil ou Link"
+              />
+              <span class="messageErrorOff" id="invalidhostinginstagram"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="description">Descrição:</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                placeholder="Descrição do post"
+              ></textarea>
+              <span class="messageErrorOff" id="invalidhostingdescription"
+                >Max 250 letras</span
+              >
+            </div>
+
+            <div>
+              <label for="bedrooms">Quartos:</label>
+              <input
+                type="number"
+                id="bedrooms"
+                formControlName="bedrooms"
+                placeholder="Número de quartos"
+              />
+              <span class="messageErrorOff" id="invalidhostingbedrooms"
+                >Apenas números</span
+              >
+            </div>
+            <div>
+              <label for="bathroom">Banheiros:</label>
+              <input
+                type="number"
+                id="bathroom"
+                formControlName="bathroom"
+                placeholder="Número de banheiros"
+              />
+              <span class="messageErrorOff" id="invalidhostingbathroom"
+                >Apenas números</span
+              >
+            </div>
+            <div>
+              <label for="vacancy">Vagas:</label>
+              <input
+                type="number"
+                id="vacancy"
+                formControlName="vacancy"
+                placeholder="Número de vagas"
+              />
+              <span class="messageErrorOff" id="invalidhostingvacancy"
+                >Apenas números</span
+              >
+            </div>
+            <div class="checkboxes">
+              <div class="checkbox">
+                <label for="hostserviceArea">Área de serviço:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="hostserviceArea"
+                  formControlName="serviceArea"
+                />
+              </div>
+              <div class="checkbox">
+                <label for="hostkitchen">Cozinha:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="hostkitchen"
+                  formControlName="kitchen"
+                />
+              </div>
+              <div class="checkbox">
+                <label for="hostgarden">Jardim:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="hostgarden"
+                  formControlName="garden"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="customBtn btnAct"
+              #submitButton
+              [disabled]="isSubmitting"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+        } @if(postType === "feeding") {
+        <form [formGroup]="feedForm" (ngSubmit)="onSubmit()">
+          <div>
+            <div>
+              <label for="title">Título:</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                placeholder="Título do post"
+                required
+              />
+              <span class="messageErrorOff" id="invalidfeedingtitle"
+                >Min 3 letras, max 50 letras</span
+              >
+            </div>
+            <div>
+              <label for="location">Localização:</label>
+              <input
+                type="text"
+                id="location"
+                formControlName="location"
+                placeholder="Cidade-UF"
+                required
+              />
+              <span class="messageErrorOff" id="invalidfeedinglocation"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="whatsApp">WhatsApp:</label>
+              <input
+                type="text"
+                id="whatsApp"
+                formControlName="whatsApp"
+                placeholder="Número ou Link"
+              />
+              <span class="messageErrorOff" id="invalidfeedingwhatsapp"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="instagram">Instagram:</label>
+              <input
+                type="text"
+                id="instagram"
+                formControlName="instagram"
+                placeholder="@perfil ou Link"
+              />
+              <span class="messageErrorOff" id="invalidfeedinginstagram"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="description">Descrição:</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                placeholder="Descrição do post"
+              ></textarea>
+              <span class="messageErrorOff" id="invalidfeedingdescription"
+                >Max 250 letras</span
+              >
+            </div>
+
+            <div>
+              <label for="type">Tipo:</label>
+              <input
+                type="text"
+                id="type"
+                formControlName="type"
+                placeholder="Tipo de estabelecimento"
+                required
+              />
+              <span class="messageErrorOff" id="invalidfeedingtype"
+                >Min 3 letras, max 50 letras</span
+              >
+            </div>
+            <div class="checkboxes">
+              <div class="checkbox">
+                <label for="feedwifi">Wi-Fi:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="feedwifi"
+                  formControlName="wifi"
+                />
+              </div>
+              <div class="checkbox">
+                <label for="feeddelivery">Delivery:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="feeddelivery"
+                  formControlName="delivery"
+                />
+              </div>
+              <div class="checkbox">
+                <label for="feedparking">Estacionamento:</label>
+                <input
+                  class="checkboxInput"
+                  type="checkbox"
+                  id="feedparking"
+                  formControlName="parking"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="customBtn btnAct"
+              #submitButton
+              [disabled]="isSubmitting"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+        } @if(postType === "event") {
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+          <div>
+            <div>
+              <label for="title">Título:</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                placeholder="Título do post"
+                required
+              />
+              <span class="messageErrorOff" id="invalideventtitle"
+                >Min 3 letras, max 50 letras</span
+              >
+            </div>
+            <div>
+              <label for="location">Localização:</label>
+              <input
+                type="text"
+                id="location"
+                formControlName="location"
+                placeholder="Cidade-UF"
+                required
+              />
+              <span class="messageErrorOff" id="invalideventlocation"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="whatsApp">WhatsApp:</label>
+              <input
+                type="text"
+                id="whatsApp"
+                formControlName="whatsApp"
+                placeholder="Número ou Link"
+              />
+              <span class="messageErrorOff" id="invalideventwhatsapp"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="instagram">Instagram:</label>
+              <input
+                type="text"
+                id="instagram"
+                formControlName="instagram"
+                placeholder="@perfil ou Link"
+              />
+              <span class="messageErrorOff" id="invalideventinstagram"
+                >Max 150 letras</span
+              >
+            </div>
+            <div>
+              <label for="description">Descrição:</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                placeholder="Descrição do post"
+              ></textarea>
+              <span class="messageErrorOff" id="invalideventdescription"
+                >Max 250 letras</span
+              >
+            </div>
+
+            <div>
+              <label for="eventDate">Data:</label>
+              <input
+                type="datetime-local"
+                id="eventDate"
+                formControlName="eventDate"
+                placeholder="Data do evento"
+              />
+            </div>
+            <div>
+              <label for="eventLocation">Local:</label>
+              <input
+                type="text"
+                id="eventLocation"
+                formControlName="eventLocation"
+                placeholder="Local do evento"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="customBtn btnAct"
+              #submitButton
+              [disabled]="isSubmitting"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>
