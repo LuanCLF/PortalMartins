@@ -56,25 +56,29 @@ A aplicação é voltada para a cidade de **Martins - RN** e adjacências, atend
 
 ## **Requisitos**
 
+:hammer:: Em progresso
+
+:ballot_box_with_check:: Feito
+
 ### **Requisitos Funcionais**  
 
 | **Código** | **Título**            | **Descrição**                                                                                 |  
 |:----------:|-----------------------|---------------------------------------------------------------------------------------------|  
-| RF01       | Cadastro de Usuários  | Permitir que moradores e proprietários criem contas na plataforma.                          |  
-| RF02       | Publicação de Posts   | Possibilitar o cadastro de restaurantes, hospedagens e eventos.                             |  
-| RF03       | Listagem de Posts     | Exibir posts organizados por categorias.                                                    |  
-| RF04       | Avaliação             | Permitir que usuários avaliem posts com classificações (estrelas).                          |  
-| RF05       | Gerenciamento         | Área administrativa para criar, editar e deletar posts.                                     |  
+| RF01       | Cadastro de Usuários  | Permitir que moradores e proprietários criem contas na plataforma :ballot_box_with_check:                          |  
+| RF02       | Publicação de Posts   | Possibilitar o cadastro de restaurantes, hospedagens e eventos :ballot_box_with_check:                           |  
+| RF03       | Listagem de Posts     | Exibir posts organizados por categorias :hammer:                                                    |  
+| RF04       | Avaliação             | Permitir que usuários avaliem posts com classificações (estrelas) :hammer:                          |  
+| RF05       | Gerenciamento         | Área administrativa para criar, editar e deletar posts :ballot_box_with_check:                                     |  
 
 ### **Requisitos Não Funcionais**  
 
 | **Código** | **Título**          | **Descrição**                                                                                 |  
 |:----------:|--------------------|---------------------------------------------------------------------------------------------|  
-| RNF01      | Usabilidade         | Plataforma deve ser fácil de navegar para usuários de todas as idades.                      |  
-| RNF02      | Mobilidade          | Design responsivo para acesso via desktop, tablets e smartphones.                           |  
-| RNF03      | Desempenho          | Suporte a múltiplos usuários simultâneos, com alto desempenho em consultas e atualizações.  |  
-| RNF04      | Segurança           | Implementação de segurança para proteger os dados dos usuários e estabelecimentos.          |  
-| RNF05      | Acessibilidade      | Conformidade com diretrizes para garantir acesso a pessoas com deficiência.                 |  
+| RNF01      | Usabilidade         | Plataforma deve ser fácil de navegar para usuários de todas as idades :ballot_box_with_check:                      |  
+| RNF02      | Mobilidade          | Design responsivo para acesso via desktop, tablets e smartphones :ballot_box_with_check:                          |  
+| RNF03      | Desempenho          | Suporte a múltiplos usuários simultâneos, com alto desempenho em consultas e atualizações :hammer:  |  
+| RNF04      | Segurança           | Implementação de segurança para proteger os dados dos usuários e estabelecimentos :ballot_box_with_check:           |  
+| RNF05      | Acessibilidade      | Conformidade com diretrizes para garantir acesso a pessoas com deficiência :hammer:                |  
 
 ---
 
@@ -82,10 +86,10 @@ A aplicação é voltada para a cidade de **Martins - RN** e adjacências, atend
 
 | **Componente**  | **Ferramenta Utilizada**  |  
 |------------------|---------------------------|  
-| Front-End        | Angular                  |  
-| Back-End         | C# (ASP.NET Core)        |  
-| Banco de Dados   | PostgreSQL ou MongoDB    |  
-| Cache            | Redis                    |  
+| Front-End        | Angular :ballot_box_with_check:                   |  
+| Back-End         | C# (ASP.NET Core)  :ballot_box_with_check:       |  
+| Banco de Dados   | PostgreSQL ou MongoDB :ballot_box_with_check:     |  
+| Cache            | Redis          :hammer:           |  
 
 ---
 
