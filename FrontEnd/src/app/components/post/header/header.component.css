@@ -1,0 +1,14 @@
+@import "../../../../headers.css";
+
+section {
+  #art2 {
+    ul {
+      li {
+        span {
+          font-size: var(--fst-h1);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
