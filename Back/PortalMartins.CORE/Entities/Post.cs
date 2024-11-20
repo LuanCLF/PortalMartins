@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using PortalMartins.CORE.Interfaces.IUtilities;
 
 namespace PortalMartins.CORE.Entities
 {
@@ -58,19 +57,28 @@ namespace PortalMartins.CORE.Entities
         {
             Images = Images.Where(i => i != path).ToArray();
         }
-        protected void Update(
-           string? title,
-           string? location,
-           string? phone,
-           string? instagram,
-           string? description
-            )
+        protected (bool, string) Update(
+            string? title,
+            string? location,
+            string? phone,
+            string? instagram,
+            string? description
+        )
         {
-            if (title is not null && (string.IsNullOrWhiteSpace(title) || title.Length > 100)) throw new ArgumentException("title cannot be longer than 100 characters and cannot be null");
-            if (location is not null && (string.IsNullOrWhiteSpace(location) || location.Length > 250)) throw new ArgumentException("location cannot be longer than 150 characters and cannot be null");
-            if (phone is not null && (string.IsNullOrWhiteSpace(phone) || phone.Length > 11)) throw new ArgumentException("phone cannot be longer than 11 characters and cannot be null");
-            if (instagram is not null && (string.IsNullOrWhiteSpace(instagram) || instagram.Length > 100)) throw new ArgumentException("instagram cannot be longer than 100 characters and cannot be null");
-            if (description is not null && string.IsNullOrWhiteSpace(description)) throw new ArgumentException("Description cannot be null");
+            if (title is not null && (string.IsNullOrWhiteSpace(title) || title.Length > 100))
+                return (true, "Title cannot be longer than 100 characters and cannot be null");
+
+            if (location is not null && (string.IsNullOrWhiteSpace(location) || location.Length > 250))
+                return (true, "Location cannot be longer than 250 characters and cannot be null");
+
+            if (phone is not null && (string.IsNullOrWhiteSpace(phone) || phone.Length > 11))
+                return (true, "Phone cannot be longer than 11 characters and cannot be null");
+
+            if (instagram is not null && (string.IsNullOrWhiteSpace(instagram) || instagram.Length > 100))
+                return (true, "Instagram cannot be longer than 100 characters and cannot be null");
+
+            if (description is not null && string.IsNullOrWhiteSpace(description))
+                return (true, "Description cannot be null");
 
             Title = title is not null ? title.Trim() : Title;
             Location = location is not null ? location.Trim() : Location;
@@ -79,6 +87,8 @@ namespace PortalMartins.CORE.Entities
             Description = description is not null ? description.Trim() : Description;
             DateTime now = DateTime.Now;
             UpdatedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, DateTimeKind.Utc);
+
+            return (false, string.Empty);
         }
         protected void Delete()
         {

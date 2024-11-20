@@ -6,7 +6,7 @@ namespace PortalMartins.CORE.Interfaces.IUtilities
     {
         Task<string> GenerateToken(Guid id);
         Task<Guid> GetId();
-        Task<User> GetUser();
-        Task<User> GetUserAndPosts();
+        Task<User?> GetUser();
+        Task<User?> GetUserAndPosts();
     }
 }

@@ -44,18 +44,20 @@ namespace PortalMartins.CORE.Entities
         public DateTime UpdatedAt { get; set; }
         public DateTime DeletedAt { get; set; }
 
-        public void Update(string? name, string? email, string? password, IEncryptor encryptor)
+        public (bool, string) Update(string? name, string? email, string? password, IEncryptor encryptor)
         {
-            if (name is not null && (string.IsNullOrWhiteSpace(name) || name.Length > 100)) throw new ArgumentException("Name cannot be longer than 100 characters and cannot be null");
-            if (email is not null && (string.IsNullOrWhiteSpace(email) || email.Length > 150)) throw new ArgumentException("Email cannot be longer than 150 characters and cannot be null");
-            if (password is not null && string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Password cannot be null");
-            if (name is null && email is null && password is null) throw new ArgumentException("At least one field must be filled");
+            if (name is not null && (string.IsNullOrWhiteSpace(name) || name.Length > 100)) return(true,"Name cannot be longer than 100 characters and cannot be null");
+            if (email is not null && (string.IsNullOrWhiteSpace(email) || email.Length > 150)) return(true,"Email cannot be longer than 150 characters and cannot be null");
+            if (password is not null && string.IsNullOrWhiteSpace(password)) return(true,"Password cannot be null");
+            if (name is null && email is null && password is null) return(true,"At least one field must be filled");
 
             Name = name is not null ? name.Trim() : Name;
             Email = email is not null ? email.Trim() : Email;
             Password = password is not null ? encryptor.Encrypt(password.Trim()) : Password;
             DateTime now = DateTime.Now;
             UpdatedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, DateTimeKind.Utc);
+
+            return (false, string.Empty);
         }
 
         public void AddPost(Post post)
@@ -65,9 +67,9 @@ namespace PortalMartins.CORE.Entities
             UpdatedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, DateTimeKind.Utc);
         }
 
-        public void Delete(string password, IEncryptor encryptor)
+        public (bool, string) Delete(string password, IEncryptor encryptor)
         {
-            if (!encryptor.Compare(password, Password)) throw new ArgumentException("Invalid password");
+            if (!encryptor.Compare(password, Password)) return (true, "Invalid password");
 
             List<Post> posts = [.. Posts];
             posts.ForEach(p => p.Active = false);
@@ -76,6 +78,8 @@ namespace PortalMartins.CORE.Entities
             Active = false;
             DateTime now = DateTime.Now;
             DeletedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, DateTimeKind.Utc);
+
+            return (false, string.Empty);
         }
     }
 

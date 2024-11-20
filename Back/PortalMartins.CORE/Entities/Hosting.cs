@@ -57,7 +57,7 @@ namespace PortalMartins.CORE.Entities
         [Column("Garden")]
         public bool Garden { get; set; }
 
-        public void Update(
+        public (bool, string) Update(
             string? title,
             string? location,
             string? phone,
@@ -71,14 +71,15 @@ namespace PortalMartins.CORE.Entities
             bool? garden
             )
         {
-            base.Update(title, location, phone, instagram, description);
+            (bool error, string msg) = base.Update(title, location, phone, instagram, description);
 
-            if(title is null && location is null &&
+            if (error) return (error, msg);
+            if (title is null && location is null &&
                 phone is null && instagram is null &&
                 description is null && bedrooms is null &&
                 bathroom is null && vacancy is null &&
                 serviceArea is null && kitchen is null &&
-                garden is null) throw new ArgumentException("At least one field must be filled");
+                garden is null) return (true, "At least one field must be filled");
 
             Bedrooms = bedrooms is not null ? bedrooms.Value : Bedrooms;
             Bathroom = bathroom is not null ? bathroom.Value : Bathroom;
@@ -86,6 +87,8 @@ namespace PortalMartins.CORE.Entities
             ServiceArea = serviceArea is not null ? serviceArea.Value : ServiceArea;
             Kitchen = kitchen is not null ? kitchen.Value : Kitchen;
             Garden = garden is not null ? garden.Value : Garden;
+
+            return (false, string.Empty);
         }
 
         public void Delete()

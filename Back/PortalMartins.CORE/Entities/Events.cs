@@ -1,7 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 
 namespace PortalMartins.CORE.Entities
 {
@@ -9,46 +8,49 @@ namespace PortalMartins.CORE.Entities
     {
         public Events(): base()
         {
-            EventDate = DateTime.Now;
+            EventDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             EventLocation = string.Empty;
         }
         public Events(Guid id, string title,
             string location, string? phone, 
             string? instagram, string? description, char category, 
-            DateTime? eventDate, string? eventLocation) : base(id, title, location, phone, instagram, description, category)
+            string? eventDate, string? eventLocation) : base(id, title, location, phone, instagram, description, category)
         {
-            EventDate = eventDate ?? DateTime.Now;
+            DateTime e  = !string.IsNullOrEmpty(eventDate) ? DateTime.Parse(eventDate) : DateTime.Now;
+            EventDate = e.ToString("yyyy-MM-dd HH:mm:ss");
             EventLocation = eventLocation is not null ? eventLocation.Trim() : string.Empty;
         }
    
 
-        [DefaultValue(typeof(DateTime))]
         [Column("EventDate")]
-        public DateTime EventDate { get; set; } 
+        public string EventDate { get; set; } 
 
         [StringLength(250)]
         [Column("EventLocation")]
-        public string EventLocation { get; set; } 
+        public string EventLocation { get; set; }
 
-        public void Update(
-            string? title,
-            string? location,
-            string? phone,
-            string? instagram,
-            string? description,
-            DateTime? eventDate,
-            string? eventLocation
-            )
+        public (bool, string) Update(
+                 string? title,
+                 string? location,
+                 string? phone,
+                 string? instagram,
+                 string? description,
+                 string? eventDate,
+                 string? eventLocation
+                 )
         {
-            base.Update(title, location, phone, instagram, description);
+            (bool error, string msg) = base.Update(title, location, phone, instagram, description);
 
+            if (error) return (error, msg);
             if (title is null && location is null &&
                 phone is null && instagram is null &&
                 description is null && eventDate is null &&
-                eventLocation is null) throw new ArgumentException("At least one field must be filled");
+                eventLocation is null) return (true, "At least one field must be filled");
 
-            EventDate = eventDate ?? EventDate;
+            EventDate = string.IsNullOrWhiteSpace(eventDate) ? EventDate : eventDate;
             EventLocation = eventLocation is not null ? eventLocation.Trim() : EventLocation;
+
+            return (false, string.Empty);
         }
         public void Delete()
         {

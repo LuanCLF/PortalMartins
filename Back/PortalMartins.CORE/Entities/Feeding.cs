@@ -41,7 +41,7 @@ namespace PortalMartins.CORE.Entities
         [Column("Parking")]
         public bool Parking { get; set; }
 
-        public void Update(
+        public (bool, string) Update(
             string? title,
             string? location,
             string? phone,
@@ -53,18 +53,21 @@ namespace PortalMartins.CORE.Entities
             bool? parking
             )
         {
-            base.Update(title, location, phone, instagram, description);
+            (bool error, string msg) = base.Update(title, location, phone, instagram, description);
 
+            if (error) return (error, msg);
             if (title is null && location is null &&
                 phone is null && instagram is null &&
                 description is null && type is null &&
                 wifi is null && delivery is null &&
-                parking is null) throw new ArgumentException("At least one field must be filled");
+                parking is null) return (true, "At least one field must be filled");
 
             Type = type is not null ? type.Trim() : Type;
             Wifi = wifi is not null ? wifi.Value : Wifi;
             Delivery = delivery is not null ? delivery.Value : Delivery;
             Parking = parking is not null ? parking.Value : Parking;
+
+            return (false, string.Empty);
         }
 
         public void Delete()
