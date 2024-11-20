@@ -1,0 +1,125 @@
+#sec1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  margin-bottom: var(--m-7);
+
+  h2 {
+    margin-top: var(--m-6);
+    margin-bottom: var(--m-5);
+  }
+
+  p {
+    margin-bottom: var(--m-3);
+  }
+
+  #pagesBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+
+    width: var(--w-full);
+
+    gap: var(--g-3);
+
+    margin-bottom: var(--m-6);
+
+    @media (min-width: 400px) {
+      justify-content: flex-end;
+      margin-right: -100px;
+      margin-left: -100px;
+    }
+
+    span {
+      font-size: var(--fst-h4);
+    }
+  }
+
+  .ulList {
+    .liBig {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      text-align: start;
+
+      gap: var(--g-4);
+
+      .img {
+        width: var(--wb-3);
+        height: var(--hb-1);
+
+        @media (min-width: 450px) {
+          width: var(--wb-4);
+          height: var(--hb-2);
+        }
+
+        @media (min-width: 1100px) {
+          width: var(--wb-6);
+          height: var(--hb-3);
+        }
+      }
+
+      .dContent {
+        h3 {
+          margin-bottom: var(--m-1);
+        }
+        /* span */
+
+        ul {
+          margin-top: var(--m-2);
+          display: flex;
+          flex-wrap: wrap;
+
+          max-width: var(--wb-2);
+
+          gap: var(--g-2);
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: var(--g-1);
+
+            font-size: var(--fst-h7);
+          }
+        }
+
+        .divSocial {
+          margin-top: var(--m-2);
+
+          display: flex;
+          flex-direction: row;
+
+          gap: var(--g-2);
+        }
+      }
+    }
+  }
+}
+
+.btnAct {
+  font-size: var(--fst-h6);
+}
+
+.uln {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--g-6);
+  justify-items: center;
+  align-items: baseline;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ul1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

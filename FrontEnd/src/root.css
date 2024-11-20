@@ -1,0 +1,177 @@
+:root {
+  --fsh-h0: 7.2rem;
+  --fsh-h1: 6.4rem;
+  --fsh-h2: 5.2rem;
+  --fsh-h3: 4rem;
+  --fsh-h4: 3.2rem;
+  --fsh-h5: 2.4rem;
+  --fsh-h6: 1.6rem;
+  --fsh-h7: 1rem;
+
+  --fst-h1: 3.2rem;
+  --fst-h2: 2.4rem;
+  --fst-h3: 1.8rem;
+  --fst-h4: 1.6rem;
+  --fst-h5: 1.4rem;
+  --fst-h6: 1.2rem;
+  --fst-h7: 1rem;
+
+  --lh-1: 1.2;
+
+  --bgc-light-0: hsl(0, 0%, 100%);
+  --bgc-light-1: hsl(0, 0%, 95%);
+  --bgc-light-2: hsl(0, 0%, 90%);
+  --bgc-light-3: hsl(0, 0%, 85%);
+
+  --bgc-dark-0: hsl(0, 0%, 10%);
+  --bgc-dark-1: hsl(0, 0%, 20%);
+  --bgc-dark-2: hsl(0, 0%, 30%);
+  --bgc-dark-3: hsl(0, 0%, 40%);
+
+  --color-info: hsl(210, 90%, 40%);
+  --color-success: hsl(155, 70%, 35%);
+  --color-warning: hsl(45, 85%, 40%);
+  --color-danger: #f04242;
+
+  --color-green-0: #042f1e;
+  --color-green-1: #178255;
+  --color-green-2: hsl(154, 55%, 50%);
+  --color-green-3: hsl(153, 40%, 70%);
+
+  --color-yellow-0: hsl(60, 100%, 50%);
+  --color-yellow-1: hsl(60, 85%, 60%);
+  --color-yellow-2: hsl(60, 70%, 70%);
+  --color-yellow-3: hsl(60, 55%, 80%);
+
+  --color-blue-0: hsl(202, 85%, 20%);
+  --color-blue-1: hsl(201, 70%, 35%);
+  --color-blue-2: hsl(200, 55%, 50%);
+  --color-blue-3: hsl(199, 40%, 65%);
+
+  --color-orange-0: rgb(179, 74, 0);
+  --color-orange-1: hsl(24, 85%, 50%);
+  --color-orange-2: hsl(23, 70%, 65%);
+  --color-orange-3: hsl(22, 55%, 80%);
+
+  --color-red-0: hsl(0, 85%, 35%);
+  --color-red-1: hsl(359, 70%, 50%);
+  --color-red-2: hsl(358, 55%, 65%);
+  --color-red-3: hsl(357, 40%, 80%);
+
+  --color-text-l-1: hsl(0, 0%, 100%);
+  --color-text-l-2: hsl(0, 0%, 90%);
+  --color-text-l-3: hsl(0, 0%, 80%);
+  --color-text-l-4: hsl(0, 0%, 70%);
+
+  --color-text-d-1: hsl(0, 0%, 10%);
+  --color-text-d-2: hsl(0, 0%, 20%);
+  --color-text-d-3: hsl(0, 0%, 30%);
+  --color-text-d-4: hsl(0, 0%, 40%);
+
+  --color-btn: #cf8217;
+  --color-btn-hover: hsl(35, 80%, 47%);
+
+  --color-error-msg: hsl(50, 100%, 60%);
+
+  --g-0: 0.1rem;
+  --g-1: 0.2rem;
+  --g-2: 0.4rem;
+  --g-3: 0.8rem;
+  --g-4: 1.6rem;
+  --g-5: 3.2rem;
+  --g-6: 6.4rem;
+  --g-7: 12.8rem;
+
+  --p-0: 0.2rem;
+  --p-1: 0.4rem;
+  --p-2: 0.8rem;
+  --p-3: 1.6rem;
+  --p-4: 2.4rem;
+  --p-5: 3.2rem;
+  --p-6: 4rem;
+  --p-7: 6rem;
+  --p-8: 8rem;
+  --p-9: 12rem;
+  --p-10: 16rem;
+
+  --m-0: 0.2rem;
+  --m-1: 0.4rem;
+  --m-2: 0.8rem;
+  --m-3: 1.6rem;
+  --m-4: 2.4rem;
+  --m-5: 3.2rem;
+  --m-6: 4rem;
+  --m-7: 6rem;
+  --m-8: 8rem;
+  --m-9: 12rem;
+  --m-10: 16rem;
+
+  --bdr-0: 0.2rem;
+  --bdr-1: 0.4rem;
+  --bdr-2: 0.8rem;
+  --bdr-3: 1.6rem;
+
+  --w-full: 100%;
+  --w-0: 1rem;
+  --w-1: 1.8rem;
+  --w-2: 2.6rem;
+  --w-3: 3.4rem;
+  --w-4: 4.2rem;
+  --w-5: 5rem;
+  --w-6: 6.6rem;
+  --w-7: 8.2rem;
+  --w-8: 9.8rem;
+  --w-9: 11.4rem;
+  --w-10: 13rem;
+  --wb-0: 20rem;
+  --wb-1: 25rem;
+  --wb-2: 30rem;
+  --wb-3: 35rem;
+  --wb-4: 40rem;
+  --wb-5: 45rem;
+  --wb-6: 50rem;
+  --wb-7: 55rem;
+  --wb-8: 60rem;
+  --wb-9: 65rem;
+  --wb-10: 70rem;
+
+  --h-full: 100%;
+  --h-0: 1rem;
+  --h-1: 1.8rem;
+  --h-2: 2.6rem;
+  --h-3: 3.4rem;
+  --h-4: 4.2rem;
+  --h-5: 5rem;
+  --h-6: 6.6rem;
+  --h-7: 8.2rem;
+  --h-8: 9.8rem;
+  --h-9: 11.4rem;
+  --h-10: 13rem;
+  --hb-0: 20rem;
+  --hb-1: 20.5rem;
+  --hb-2: 30rem;
+  --hb-3: 30.5rem;
+  --hb-4: 40rem;
+  --hb-5: 40.5rem;
+  --hb-6: 50rem;
+  --hb-7: 50.5rem;
+  --hb-8: 60rem;
+  --hb-9: 60.5rem;
+  --hb-10: 70rem;
+}
+
+/* <!-- Color Palette -->
+<!--
+//  #0d5436
+//  #117349
+//  #79b569
+//  #d7ad37
+//  #b87019
+//  
+//  #7798AB
+//  #FFC107
+//  #155E39
+//  #C44900
+//  #C3DBC5 
+
+<!-- Color Palette --> */

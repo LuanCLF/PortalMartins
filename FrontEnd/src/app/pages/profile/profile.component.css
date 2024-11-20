@@ -1,0 +1,234 @@
+main {
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    text-align: center;
+
+    height: 85vh;
+
+    h1 {
+      font-size: var(--fsh-h3);
+
+      margin-top: var(--m-3);
+      margin-bottom: var(--m-2);
+
+      span {
+        font-size: inherit;
+      }
+    }
+
+    p {
+      margin-bottom: var(--m-5);
+    }
+
+    h2 {
+      margin-bottom: var(--m-3);
+    }
+
+    #artBig {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-wrap: wrap;
+
+      gap: var(--g-5);
+
+      .artPosts {
+        background-color: var(--color-green-1);
+        border-radius: var(--bdr-2);
+        padding: var(--p-3);
+
+        width: var(--wb-3);
+        position: relative;
+
+        color: var(--color-text-l-1);
+        h3 {
+          margin-bottom: var(--m-1);
+        }
+
+        .divPage {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--g-3);
+
+          position: relative;
+          top: -25px;
+          right: -65px;
+
+          button {
+            font-size: var(--fst-h5);
+          }
+        }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: var(--g-3);
+          li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: var(--g-5);
+
+            h4 {
+              font-size: var(--fsh-h7);
+              word-break: break-all;
+            }
+
+            .divBtn {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: end;
+              gap: var(--g-2);
+
+              width: var(--wb-0);
+
+              button {
+                padding: var(--p-2) var(--p-2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-dialog {
+  position: relative;
+
+  margin: 4% auto;
+  padding: var(--p-3);
+  width: 80%;
+  max-width: var(--wb-5);
+
+  background-color: var(--bgc-light-1);
+  color: var(--color-text-d-1);
+
+  border-radius: var(--bdr-3);
+
+  margin-top: var(--m-8);
+}
+
+.modal-header,
+.modal-footer {
+  display: flex;
+  align-items: baseline;
+}
+
+.modal-header {
+  margin-bottom: var(--m-3);
+  text-align: center;
+  justify-content: center;
+
+  position: relative;
+
+  h1 {
+    font-size: var(--fsh-h5);
+  }
+
+  button {
+    position: relative;
+    right: -25%;
+    font-size: var(--fst-h2);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.modal-body {
+  form {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--g-5);
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      gap: var(--g-4);
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        gap: var(--p-1);
+
+        label,
+        input,
+        select,
+        option {
+          font-size: var(--fst-h6);
+        }
+
+        input,
+        select {
+          padding: var(--p-2);
+          border-radius: var(--bdr-1);
+
+          border: none;
+          outline: none;
+
+          width: var(--wb-0);
+        }
+
+        label {
+          margin-top: var(--m-1);
+          margin-bottom: var(--m-1);
+        }
+
+        input {
+          margin-bottom: var(--m-1);
+        }
+      }
+      .checkboxes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: var(--wb-0);
+
+        .checkbox {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+
+          .checkboxInput {
+            width: var(--w-1);
+          }
+        }
+      }
+    }
+  }
+}

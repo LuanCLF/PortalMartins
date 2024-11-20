@@ -1,0 +1,14 @@
+@import "../../../../headers.css";
+
+section {
+  #art2 {
+    ul {
+      li {
+        .icons {
+          width: max-content;
+          height: max-content;
+        }
+      }
+    }
+  }
+}
