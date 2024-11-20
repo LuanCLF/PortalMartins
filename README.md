@@ -32,7 +32,7 @@ O projeto será aplicado na cidade de Martins - RN e região, beneficiando os mo
 
 |    |        Título        |                                       Descrição                                        |
 | :--: | :------------------: | :------------------------------------------------------------------------------------: |
-| RF01 | Cadastro de Usuários | Permitir que moradores e proprietários de estabelecimentos criem contas na plataforma. |
+| RF01 | Cadastro de Usuários | Permitir que moradores e proprietários de estabelecimentos criem contas na plataforma.   |
 | RF02 | Publicação de Posts  |   Funcionalidade para usuários cadastrarem seus restaurantes, hospedagens ou eventos   |
 | RF03 |  Listagem de Posts   |                        Páginas separadas para cada tipo de post                        |
 | RF04 |      Avaliação       |            Permitir que usuários avaliem posts por classificação (estrelas)            |

@@ -131,7 +131,8 @@ section {
 }
 
 .pInformation {
-  line-height: var(--lh-1);
+  line-height: var(--lh-2);
+  font-size: var(--fst-h4);
 }
 
 .icons {
