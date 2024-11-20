@@ -19,11 +19,7 @@ import { IUserLoginRQ } from '../../interfaces/user.';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NavComponent,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, NavComponent],
   template: `
     <header>
       <app-nav></app-nav>
@@ -55,7 +51,12 @@ import { IUserLoginRQ } from '../../interfaces/user.';
             />
             <span class="messageErrorOff" id="invalidPassword"></span>
           </div>
-          <button class="customBtn btnAct" type="submit" #submitButton [disabled]="isSubmitting">
+          <button
+            class="customBtn btnAct"
+            type="submit"
+            #submitButton
+            [disabled]="isSubmitting"
+          >
             Acessar minha conta
           </button>
           <span class="messageErrorOff" id="loginFail"
@@ -105,8 +106,8 @@ export class LoginComponent {
 
     if (this.loginForm.valid) {
       const user: IUserLoginRQ = {
-        email: "maria",
-        password: "string",
+        email: email.value,
+        password: password.value,
       };
 
       this.isSubmitting = true;
