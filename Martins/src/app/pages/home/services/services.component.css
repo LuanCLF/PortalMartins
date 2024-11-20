@@ -45,6 +45,7 @@ section {
       }
 
       h3 {
+        font-size: var(--fsh-h5);
         margin-top: var(--m-3);
         margin-bottom: var(--m-2);
 
