@@ -68,7 +68,7 @@ namespace PortalMartins.INFRA.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false),
-                    EventDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    EventDate = table.Column<string>(type: "text", nullable: false),
                     EventLocation = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false)
                 },
                 constraints: table =>

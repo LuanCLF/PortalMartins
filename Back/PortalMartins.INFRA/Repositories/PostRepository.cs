@@ -10,6 +10,8 @@ namespace PortalMartins.INFRA.Repositories
         private readonly AppDBContext _context = context;
         private readonly CancellationToken _cancellationToken = cancellationToken;
 
+        private static int Skip(int? page) => (page is null || page <= 0) ? 0 : ((page.Value - 1) * 10);
+
         public async Task<Post?> Get(int id)
         {
             return await _context.Posts.FirstOrDefaultAsync(p => p.Active == true && p.Id == id);
@@ -34,29 +36,29 @@ namespace PortalMartins.INFRA.Repositories
         {
             return await _context.Events.FirstOrDefaultAsync(e => e.Active == true && e.Id == id && e.UserId == uId);
         }
-        public async Task<List<Hosting>> GetAllH()
+        public async Task<List<Hosting>> GetAllH(int? page)
         {
-            return await _context.Hostings.ToListAsync();
+            return await _context.Hostings.Skip(Skip(page)).Take(10).ToListAsync();
         }
-        public async Task<List<Hosting>> GetAllH(Guid? id)
+        public async Task<List<Hosting>> GetAllH(Guid? id, int? page)
         {
-            return await _context.Hostings.Where(h => h.Active && h.UserId == id).ToListAsync();
+            return await _context.Hostings.Where(h => h.Active && h.UserId == id).Skip(Skip(page)).Take(10).ToListAsync();
         }
-        public async Task<List<Feeding>> GetAllF()
+        public async Task<List<Feeding>> GetAllF(int? page)
         {
-            return await _context.Feedings.Where(f => f.Active == true).ToListAsync();
+            return await _context.Feedings.Where(f => f.Active == true).Skip(Skip(page)).Take(10).ToListAsync();
         }
-        public async Task<List<Feeding>> GetAllF(Guid? id)
+        public async Task<List<Feeding>> GetAllF(Guid? id, int? page)
         {
-            return await _context.Feedings.Where(f => f.Active && f.UserId == id).ToListAsync();
+            return await _context.Feedings.Where(f => f.Active && f.UserId == id).Skip(Skip(page)).Take(10).ToListAsync();
         }
-        public async Task<List<Events>> GetAllE()
+        public async Task<List<Events>> GetAllE(int? page)
         {
-            return await _context.Events.Where(e => e.Active == true).ToListAsync();
+            return await _context.Events.Where(e => e.Active == true).Skip(Skip(page)).Take(10).ToListAsync();
         }
-        public async Task<List<Events>> GetAllE(Guid? id)
+        public async Task<List<Events>> GetAllE(Guid? id, int? page)
         {
-            return await _context.Events.Where(e => e.Active && e.UserId == id).ToListAsync();
+            return await _context.Events.Where(e => e.Active && e.UserId == id).Skip(Skip(page)).Take(10).ToListAsync();
         }
         public async Task Add(Post entity)
         {

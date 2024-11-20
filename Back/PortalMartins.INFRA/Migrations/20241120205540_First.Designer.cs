@@ -12,7 +12,7 @@ using PortalMartins.INFRA.Context;
 namespace PortalMartins.INFRA.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241114202641_First")]
+    [Migration("20241120205540_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -134,8 +134,9 @@ namespace PortalMartins.INFRA.Migrations
                 {
                     b.HasBaseType("PortalMartins.CORE.Entities.Post");
 
-                    b.Property<DateTime>("EventDate")
-                        .HasColumnType("timestamp with time zone")
+                    b.Property<string>("EventDate")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("EventDate");
 
                     b.Property<string>("EventLocation")

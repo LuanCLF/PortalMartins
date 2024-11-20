@@ -131,8 +131,9 @@ namespace PortalMartins.INFRA.Migrations
                 {
                     b.HasBaseType("PortalMartins.CORE.Entities.Post");
 
-                    b.Property<DateTime>("EventDate")
-                        .HasColumnType("timestamp with time zone")
+                    b.Property<string>("EventDate")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("EventDate");
 
                     b.Property<string>("EventLocation")
