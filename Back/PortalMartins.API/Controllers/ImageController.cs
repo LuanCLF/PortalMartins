@@ -19,11 +19,16 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPost("/upload/user/image")]
         [EndpointSummary("Upload an image to a post")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
         public async Task<ActionResult> Upload([FromForm] ImageDto.Upload im)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
                 if (im.File == null || im.File.Length == 0) return BadRequest("Need to submit an image");
 
@@ -42,16 +47,19 @@ namespace PortalMartins.API.Controllers
                 await file.CopyToAsync(memoryStream);
                 byte[] buffer = memoryStream.ToArray();
 
-                Post post = await _postRepository.Get(im.Id) ?? throw new ArgumentException("Post not found");
+                Post? post = await _postRepository.Get(im.Id);
+                if(post == null) return NotFound("Post not found");
+
                 string path = await _image.Upload(file.FileName, buffer, post.Category, im.Id, user.Id);
                 post.AddImage(path);
 
                 await _postRepository.Update(post);
                 
-                return StatusCode(201);
+                return Created();
             }
             catch (Exception ex)
             {
+
                 return StatusCode(500, ex.Message);
             }
         }
@@ -59,11 +67,15 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpDelete("/delete/user/image")]
         [EndpointSummary("Delete an image from a post")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
         public async Task<ActionResult> Delete([FromBody] ImageDto.Delete dl)
         {
             try
             {
-                Post post = await _postRepository.Get(dl.Id) ?? throw new ArgumentException("Post not found");
+                Post? post = await _postRepository.Get(dl.Id);
+                if (post == null) return NotFound("Post not found");
 
                 await _image.Delete(dl.Path);
 
@@ -71,7 +83,7 @@ namespace PortalMartins.API.Controllers
 
                 await _postRepository.Update(post);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {

@@ -18,11 +18,13 @@ namespace PortalMartins.API.Controllers
 
         [HttpGet("/get/events")]
         [EndpointSummary("Get all events")]
-        public async Task<ActionResult> All()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<EventsDto.EGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> All([FromQuery] int? page)
         {
             try
             {
-                List<Events> events = await _postRepository.GetAllE();
+                List<Events> events = await _postRepository.GetAllE(page);
 
                 List<EventsDto.EGetAllResponse> eventsDto =
                     events.Select(e => new EventsDto.EGetAllResponse(
@@ -40,7 +42,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: e.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, eventsDto);
+                return Ok(eventsDto);
             }
             catch (Exception ex)
             {
@@ -51,23 +53,35 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPost("/create/user/event")]
         [EndpointSummary("Registers an event post")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] EventsDto.ECreateRequest cr)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                user.AddPost(new Events(
-                    user.Id, cr.Title,
-                    cr.Location, cr.Phone,
-                    cr.Instagram, cr.Description,
-                    'E',
-                    cr.EventDate, cr.EventLocation
-                    ));
-
+                try
+                {
+                    user.AddPost(new Events(
+                     user.Id, cr.Title,
+                     cr.Location, cr.Phone,
+                     cr.Instagram, cr.Description,
+                     'E',
+                     cr.EventDate, cr.EventLocation
+                     ));
+                }
+                catch (Exception er)
+                {
+                    return BadRequest(er.Message);
+                }
+ 
                 await _userRepository.Update(user);
 
-                return StatusCode(201);
+               return Created();
             }
             catch (Exception ex)
             {
@@ -78,13 +92,16 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpGet("/get/user/events")]
         [EndpointSummary("Get all events from user")]
-        public async Task<ActionResult> AllFromUser()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<EventsDto.EGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> AllFromUser([FromQuery] int? page)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                List<Events> events = await _postRepository.GetAllE(user.Id);
+                List<Events> events = await _postRepository.GetAllE(user.Id, page);
 
                 List<EventsDto.EGetAllResponse> eventsDto =
                     events.Select(e => new EventsDto.EGetAllResponse(
@@ -102,7 +119,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: e.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, eventsDto);
+                return Ok(eventsDto);
             }
             catch (Exception ex)
             {
@@ -113,24 +130,31 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPatch("/update/user/event")]
         [EndpointSummary("Updates a event post")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update([FromBody] EventsDto.EUpdateRequest up)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                Events events = await _postRepository.GetE(up.Id, user.Id) ?? throw new ArgumentException("Post not found");
+                Events? events = await _postRepository.GetE(up.Id, user.Id);
+                if (events == null) return NotFound("Event not found");
 
-                events.Update(
+                (bool er, string msg) = events.Update(
                     up.Title,
                     up.Location, up.Phone,
                     up.Instagram, up.Description,
                     up.EventDate, up.EventLocation
                     );
+                if (er) return BadRequest(msg); 
 
                 await _postRepository.Update(events);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -141,19 +165,24 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpDelete("/delete/user/event/{id}")]
         [EndpointSummary("Delete event from user")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                Events events = await _postRepository.GetE(id, user.Id) ?? throw new ArgumentException("Post not found");
+                Events? events = await _postRepository.GetE(id, user.Id);
+                if (events == null) return NotFound("Event not found");
 
                 events.Delete();
 
                 await _postRepository.Update(events);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {

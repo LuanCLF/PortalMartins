@@ -18,6 +18,8 @@ namespace PortalMartins.API.Controllers
 
         [HttpGet("/users")]
         [EndpointSummary("Get users")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserDto.UGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAllUsers()
         {
             try
@@ -26,7 +28,7 @@ namespace PortalMartins.API.Controllers
 
                 List<UserDto.UGetAllResponse> usersDto = users.Select(u => new UserDto.UGetAllResponse(u.Name, u.CameFrom, u.WhatIsIt, u.CreatedAt, u.UpdatedAt)).ToList();
 
-                return StatusCode(200, usersDto);
+                return Ok(usersDto);
             }
             catch (Exception ex)
             {
@@ -36,18 +38,30 @@ namespace PortalMartins.API.Controllers
 
         [HttpPost("/create")]
         [EndpointSummary("Registers a user")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status409Conflict, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] UserDto.UCreateRequest cr )
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(cr.Email)) throw new ArgumentException("Email cannot be null");
-                if (await _userRepository.CheckIfExist(cr.Email) != false) throw new ArgumentException("User already exists");
+                if (string.IsNullOrWhiteSpace(cr.Email)) return BadRequest("Email cannot be null");
+                if (await _userRepository.CheckIfExist(cr.Email) != false) return Conflict("User already exists");
 
-                User user = new(cr.Name, cr.Email, cr.Password, cr.CameFrom, cr.WhatIsIt, _encryptor);
+                User user = new();
+                try
+                {
+                     user = new(cr.Name, cr.Email, cr.Password, cr.CameFrom, cr.WhatIsIt, _encryptor);
+                }
+                catch (Exception er)
+                {
+                    return BadRequest(er.Message);
+                }
 
                 await _userRepository.Add(user);
-
-                return StatusCode(201);
+                
+                return Created();
             }
             catch (Exception ex)
             {
@@ -57,19 +71,25 @@ namespace PortalMartins.API.Controllers
 
         [HttpPost("/login")]
         [EndpointSummary("Logs in a user")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto.ULoginResponse))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Login([FromBody] UserDto.ULoginRequest lg)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(lg.Email) || string.IsNullOrWhiteSpace(lg.Password)) throw new ArgumentException("Email and password cannot be null");
+                if (string.IsNullOrWhiteSpace(lg.Email) || string.IsNullOrWhiteSpace(lg.Password)) return BadRequest("Email and password cannot be null");
 
-                User user = await _userRepository.GetUser(lg.Email) ?? throw new ArgumentException("User not found");
+                User? user = await _userRepository.GetUser(lg.Email);
+                if (user == null) return NotFound("User not found");
 
-                if (!_encryptor.Compare(lg.Password, user.Password)) throw new ArgumentException("Invalid password");
+                if (!_encryptor.Compare(lg.Password, user.Password)) return Unauthorized("Invalid password");
 
                 string token = await _authenticator.GenerateToken(user.Id);
 
-                return StatusCode(200, new UserDto.ULoginResponse(user.Name, user.Email, token, user.CreatedAt));
+                return Ok(new UserDto.ULoginResponse(user.Name, user.Email, token, user.CreatedAt));
             }
             catch (Exception ex)
             {
@@ -80,19 +100,26 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPatch("/update/user")]
         [EndpointSummary("Update user")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status409Conflict, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update([FromBody] UserDto.UUpdateRequest up)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                if (up.Email is not null && await _userRepository.CheckIfExist(up.Email) != false) throw new ArgumentException("User already exists");
+                if (up.Email is not null && await _userRepository.CheckIfExist(up.Email) != false) return Conflict("User already exists");
 
-                user.Update(up.Name, up.Email, up.Password, _encryptor);
+                (bool er, string msg) = user.Update(up.Name, up.Email, up.Password, _encryptor);
+                if(er) return BadRequest(msg);
 
                 await _userRepository.Update(user);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -103,17 +130,23 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpDelete("/delete/user")]
         [EndpointSummary("Delete user")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete([FromBody] UserDto.UDeleteRequest del)
         {
             try
             {
-                User user = await _authenticator.GetUserAndPosts();
+                User? user = await _authenticator.GetUserAndPosts();
+                if(user == null) return NotFound("User not found");
 
-                user.Delete(del.Password, _encryptor);
+                (bool er, string msg) = user.Delete(del.Password, _encryptor);
+                if(er) return Unauthorized(msg);
 
                 await _userRepository.Update(user);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {

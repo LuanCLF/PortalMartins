@@ -18,12 +18,13 @@ namespace PortalMartins.API.Controllers
 
         [HttpGet("/get/hostings")]
         [EndpointSummary("Get all hostings")]
-
-        public async Task<ActionResult> All()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<HostingDto.HGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> All([FromQuery] int? page)
         {
             try
             {
-                List<Hosting> hostings = await _postRepository.GetAllH();
+                List<Hosting> hostings = await _postRepository.GetAllH(page);
 
                 List<HostingDto.HGetAllResponse> hostingsDto = 
                     hostings.Select(h => new HostingDto.HGetAllResponse(
@@ -45,7 +46,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: h.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, hostingsDto);
+                return Ok(hostingsDto);
             }
             catch (Exception ex)
             {
@@ -56,13 +57,18 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPost("/create/user/hosting")]
         [EndpointSummary("Registers a hosting post")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] HostingDto.HCreateRequest cr)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                user.AddPost(new Hosting(
+                try{
+                    user.AddPost(new Hosting(
                     user.Id, cr.Title,
                     cr.Location, cr.Phone,
                     cr.Instagram, cr.Description,
@@ -71,10 +77,15 @@ namespace PortalMartins.API.Controllers
                     cr.Vacancy, cr.ServiceArea,
                     cr.Kitchen, cr.Garden
                     ));
+                }
+                catch (Exception er)
+                {
+                    return BadRequest(er.Message);
+                }
 
                 await _userRepository.Update(user);
 
-                return StatusCode(201);
+               return Created();
             }
             catch (Exception ex)
             {
@@ -85,13 +96,17 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpGet("/get/user/hostings")]
         [EndpointSummary("Get all hostings from user")]
-        public async Task<ActionResult> AllFromUser()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<HostingDto.HGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> AllFromUser([FromQuery] int? page)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
 
-                List<Hosting> hostings = await _postRepository.GetAllH(user.Id);
+                if (user == null) return NotFound("User not found");
+
+                List<Hosting> hostings = await _postRepository.GetAllH(user.Id, page);
 
                 List<HostingDto.HGetAllResponse> hostingsDto = hostings.Select(h => new HostingDto.HGetAllResponse(
                     Id: h.Id,
@@ -112,7 +127,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: h.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, hostingsDto);
+                return Ok(hostingsDto);
             }
             catch (Exception ex)
             {
@@ -123,15 +138,21 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPatch("/update/user/hosting")]
         [EndpointSummary("Updates a hosting post")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update([FromBody] HostingDto.HUpdateRequest up)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                Hosting hosting = await _postRepository.GetH(up.Id, user.Id) ?? throw new ArgumentException("Post not found");
+                Hosting? hosting = await _postRepository.GetH(up.Id, user.Id);
+                if(hosting == null) return NotFound("Post not found");
 
-                hosting.Update(
+                (bool er, string msg) = hosting.Update(
                     up.Title,
                     up.Location, up.Phone,
                     up.Instagram, up.Description,
@@ -139,10 +160,11 @@ namespace PortalMartins.API.Controllers
                     up.Vacancy, up.ServiceArea,
                     up.Kitchen, up.Garden
                     );
+                if (er) return BadRequest(msg);
 
                 await _postRepository.Update(hosting);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -153,19 +175,24 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpDelete("/delete/user/hosting/{id}")]
         [EndpointSummary("Delete hosting from user")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                Hosting hosting = await _postRepository.GetH(id, user.Id) ?? throw new ArgumentException("Post not found");
+                Hosting? hosting = await _postRepository.GetH(id, user.Id);
+                if (hosting == null) return NotFound("Post not found");
 
                 hosting.Delete();
 
                 await _postRepository.Update(hosting);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {

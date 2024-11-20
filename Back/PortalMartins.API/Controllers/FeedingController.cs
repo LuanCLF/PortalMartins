@@ -18,11 +18,13 @@ namespace PortalMartins.API.Controllers
 
         [HttpGet("/get/feedings")]
         [EndpointSummary("Get all feedings")]
-        public async Task<ActionResult> All()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<FeedingDto.FGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> All([FromQuery] int? page)
         {
             try
             {
-                List<Feeding> feeding = await _postRepository.GetAllF();
+                List<Feeding> feeding = await _postRepository.GetAllF(page);
 
                 List<FeedingDto.FGetAllResponse> feedingDto =
                     feeding.Select(f => new FeedingDto.FGetAllResponse(
@@ -42,7 +44,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: f.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, feedingDto);
+                return Ok(feedingDto);
             }
             catch (Exception ex)
             {
@@ -53,13 +55,19 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPost("/create/user/feeding")]
         [EndpointSummary("Registers a feeding post")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] FeedingDto.FCreateRequest cr)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                user.AddPost(new Feeding(
+                 try {
+                    user.AddPost(new Feeding(
                     user.Id, cr.Title,
                     cr.Location, cr.Phone,
                     cr.Instagram, cr.Description,
@@ -67,10 +75,15 @@ namespace PortalMartins.API.Controllers
                     cr.Type, cr.Wifi,
                     cr.Delivery, cr.Parking
                     ));
+                }
+                catch (Exception er)
+                {
+                    return BadRequest(er.Message);
+                }
 
                 await _userRepository.Update(user);
 
-                return StatusCode(201);
+               return Created();
             }
             catch (Exception ex)
             {
@@ -81,13 +94,16 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpGet("/get/user/feedings")]
         [EndpointSummary("Get all feedings from user")]
-        public async Task<ActionResult> AllFromUser()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<FeedingDto.FGetAllResponse>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> AllFromUser([FromQuery] int? page)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                List<Feeding> feedings = await _postRepository.GetAllF(user.Id);
+                List<Feeding> feedings = await _postRepository.GetAllF(user.Id, page);
 
                 List<FeedingDto.FGetAllResponse> feedingsDto =
                     feedings.Select(f => new FeedingDto.FGetAllResponse(
@@ -107,7 +123,7 @@ namespace PortalMartins.API.Controllers
                     UpdatedAt: f.UpdatedAt
                     )).ToList();
 
-                return StatusCode(200, feedingsDto);
+                return Ok(feedingsDto);
             }
             catch (Exception ex)
             {
@@ -118,25 +134,32 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpPatch("/update/user/feeding")]
         [EndpointSummary("Updates a feeding post")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update([FromBody] FeedingDto.FUpdateRequest ur)
         {
             try
             {
-                User user = await _authenticator.GetUser();
+                User? user = await _authenticator.GetUser();
+                if (user == null) return NotFound("User not found");
 
-                Feeding feeding = await _postRepository.GetF(ur.Id, user.Id) ?? throw new ArgumentException("Post not found");
+                Feeding? feeding = await _postRepository.GetF(ur.Id, user.Id);
+                if (feeding == null) return NotFound("Post not found");
 
-                feeding.Update(
+                 (bool er, string msg) = feeding.Update(
                     ur.Title, ur.Location,
                     ur.Phone, ur.Instagram,
                     ur.Description, ur.Type,
                     ur.Wifi, ur.Delivery,
                     ur.Parking
                     );
+                if (er) return BadRequest(msg);
 
                 await _postRepository.Update(feeding);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -147,20 +170,23 @@ namespace PortalMartins.API.Controllers
         [Authorize]
         [HttpDelete("/delete/user/feeding/{id}")]
         [EndpointSummary("Deletes a feeding post")]
-
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             try
             {
                 Guid uId = await _authenticator.GetId();
 
-                Feeding feeding = await _postRepository.GetF(id, uId) ?? throw new ArgumentException("Post not found");
+                Feeding? feeding = await _postRepository.GetF(id, uId);
+                if (feeding == null) return NotFound("Post not found");
 
                 feeding.Delete();
 
                 await _postRepository.Update(feeding);
 
-                return StatusCode(204);
+                return NoContent();
             }
             catch (Exception ex)
             {

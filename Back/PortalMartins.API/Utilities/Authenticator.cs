@@ -46,21 +46,17 @@ namespace PortalMartins.API.Utilities
 
             return Task.FromResult(Guid.Parse(idClaim.Value));
         }
-        public async Task<User> GetUser()
+        public async Task<User?> GetUser()
         {
             Guid id = await GetId();
 
-            User user = await _userRepository.Get(id) ?? throw new ArgumentException("User not found");
-
-            return user;
+            return await _userRepository.Get(id);
         }        
-        public async Task<User> GetUserAndPosts()
+        public async Task<User?> GetUserAndPosts()
         {
             Guid id = await GetId();
 
-            User user = await _userRepository.GetPosts(id) ?? throw new ArgumentException("User not found");
-
-            return user;
+            return await _userRepository.GetPosts(id);
         }
     }
 }

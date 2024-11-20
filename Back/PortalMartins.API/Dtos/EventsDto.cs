@@ -8,7 +8,7 @@
             string? Phone,
             string? Instagram,
             string? Description,
-            DateTime? EventDate,
+            string? EventDate,
             string? EventLocation
             );
         public record EUpdateRequest
@@ -19,7 +19,7 @@
             string? Phone,
             string? Instagram,
             string? Description,
-            DateTime? EventDate,
+            string? EventDate,
             string? EventLocation
         );
         public record EGetAllResponse
@@ -32,7 +32,7 @@
             float  Classification,
             string Description,
             string[] Images,
-            DateTime EventDate,
+            string EventDate,
             string EventLocation,
             DateTime CreatedAt,
             DateTime UpdatedAt

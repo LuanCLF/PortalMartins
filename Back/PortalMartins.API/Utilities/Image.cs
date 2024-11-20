@@ -46,9 +46,9 @@ namespace PortalMartins.API.Utilities
 
             string responseContent = await response.Content.ReadAsStringAsync();
             JsonElement jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
-            string fileUrl = jsonResponse.GetProperty("content").GetProperty("html_url").GetString()!;
+            string fileUrl = jsonResponse.GetProperty("content").GetProperty("download_url").GetString()!;
 
-            return path;
+            return fileUrl;
         }
 
         public async Task Delete(string path)
@@ -93,49 +93,3 @@ namespace PortalMartins.API.Utilities
         }
     }
 }
-//import { Request, Response } from "express";
-//import { ImageHostingService } from "../service/utils";
-//import { error } from "../../domain/error";
-//import { getEvent, updateEvent } from "../../infra/event";
-//import { getFood, updateFood } from "../../infra/food";
-//import { getHosp, updateHosp } from "../../infra/hosp";
-
-//const updateEventImages = async(id: string, imageUrl: string) => {
-//  const post = await getEvent(id);
-//if (!post) throw new error("Post not found", 404);
-
-//const exist = post.images.some((image: string) => image == imageUrl);
-
-//if (!exist)
-//{
-//    post.images.push(imageUrl);
-//    await updateEvent(id, post);
-//}
-//}
-
-//const updadteHospImages = async(id: string, imageUrl: string) => {
-//  const post = await getHosp(id);
-//if (!post) throw new error("Post not found", 404);
-
-//const exist = post.images.some((image: string) => image == imageUrl);
-
-//if (!exist)
-//{
-//    post.images.push(imageUrl);
-//    await updateHosp(id, post);
-//}
-//}
-
-//const updateFoodImages = async(id: string, imageUrl: string) => {
-//  const post = await getFood(id);
-//if (!post) throw new error("Post not found", 404);
-
-//const exist = post.images.some((image: string) => image == imageUrl);
-
-//if (!exist)
-//{
-//    post.images.push(imageUrl);
-//    await updateFood(id, post);
-//}
-//}
-
