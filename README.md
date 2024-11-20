@@ -1,75 +1,113 @@
-# PortalMartins
-Desenvolvimento de uma Plataforma Integrada de Informações Locais para Fomentar o Turismo e a Economia
 
-1. [Projeto]
-- 1.1 [Requisitos]
-- 1.2 [Implementação]
-- 1.3 [Imagens]
-2. [API]
-- 1.1 [User]
-- 1.2 [Hosting]
-- 1.3 [Feeding]
-- 1.4 [Event]
-- 1.5 [Image]
-
-
-### [ODS](https://brasil.un.org/pt-br/sdgs)
- - Trabalho decente e crescimento econômico
- - Cidades e comunidades sustentáveis
-
-## Setor de Aplicação
-O projeto será aplicado na cidade de Martins - RN e região, beneficiando os moradores. O setor de aplicação inclui informações sobre restaurantes, imóveis para venda/aluguel e eventos locais
-
-## Objetivos
-- **Facilitar o acesso a informações locais**: Desenvolver uma plataforma intuitiva que permita aos usuários encontrar informações sobre restaurantes, casas para alugar/vender e eventos na cidade.
-
-- **Promover a colaboração com a comunidade**: Incentivar proprietários de estabelecimentos e moradores a compartilhar informações relevantes, como seus estabelecimentos e detalhes sobre eventos locais.
-
-## Projeto
-
-### Requisitos
-#### 1. Requisitos Funcionais
-
-|    |        Título        |                                       Descrição                                        |
-| :--: | :------------------: | :------------------------------------------------------------------------------------: |
-| RF01 | Cadastro de Usuários | Permitir que moradores e proprietários de estabelecimentos criem contas na plataforma.   |
-| RF02 | Publicação de Posts  |   Funcionalidade para usuários cadastrarem seus restaurantes, hospedagens ou eventos   |
-| RF03 |  Listagem de Posts   |                        Páginas separadas para cada tipo de post                        |
-| RF04 |      Avaliação       |            Permitir que usuários avaliem posts por classificação (estrelas)            |
-| RF05 |    Gerenciamento     |   Área para que os usuários possam gerenciar seus posts (criar, atualizar, deletar)    |
-
-#### 2. Requisitos Não Funcionais
-
-|     |     Título     |                                                                               Descrição                                                                                |
-| :---: | :------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| RNF01 |  Usabilidade   |                                          Plataforma deve ser intuitiva e de fácil navegação para usuários de todas as idades                                           |
-| RNF02 |   Mobilidade   |                                        Design responsivo para acesso em diferentes dispositivos (desktop, tablets, smartphones)                                        |
-| RNF03 |   Desempenho   |               O sistema deve suportar um grande número de usuários simultâneos, garantindo que as consultas e atualizações sejam realizadas rapidamente                |
-| RNF04 |   Segurança    |                              Implementar medidas de segurança para proteção dos dados dos usuários e das informações dos estabelecimentos                              |
-| RNF05 | Gerenciamento  |                                           Área para que os usuários possam gerenciar seus posts (criar, atualizar, deletar)                                            |
-| RNF06 | Acessibilidade | Garantir que a plataforma esteja em conformidade com as diretrizes de acessibilidade, permitindo que pessoas com deficiências possam utilizar todas as funcionalidades |
-
-
-### Implementação
-
-|      Área      |         Ferramenta          |
-| :------------: | :-------------------------: |
-|   Front-End    |           Angular           |
-|    Back-End    |             C#              |
-| Banco de dados | PostgreSQL/MYSQL ou MongoDB |
-|     Cache      |            Redis            |
-
-
-### Imagens
-
-![ARCHITECTURE](ARCHITECTURE.jpeg){ width=450 }
-![RELATIONSHIP](RELATIONSHIP.jpeg){ width=450 }
+# **PortalMartins**  
+**Plataforma Integrada de Informações Locais para Fomentar o Turismo e a Economia**
 
 ---
 
-## API
+## **Sumário**
 
-### USER
+1. [Descrição do Projeto](#descrição-do-projeto)  
+2. [Objetivos](#objetivos)  
+3. [Setor de Aplicação](#setor-de-aplicação)  
+4. [Requisitos](#requisitos)  
+   - [Requisitos Funcionais](#requisitos-funcionais)  
+   - [Requisitos Não Funcionais](#requisitos-não-funcionais)  
+5. [Implementação](#implementação)  
+6. [Imagens](#imagens)  
+7. [API](#api)  
+   - [User](#user)  
+   - [Hosting](#hosting)  
+   - [Feeding](#feeding)  
+   - [Event](#event)  
+   - [Image](#image)  
+
+---
+
+## **Descrição do Projeto**
+
+O **PortalMartins** é uma plataforma web voltada para promover o turismo e a economia na cidade de **Martins - RN** e região. O sistema conecta moradores e visitantes, oferecendo informações sobre restaurantes, imóveis para aluguel/venda e eventos locais.  
+
+Com foco em acessibilidade e usabilidade, a plataforma busca beneficiar moradores, empresários e turistas, criando um ecossistema colaborativo.  
+
+---
+
+## **Objetivos**
+
+### **Principais Objetivos**  
+- **Facilitar o acesso a informações locais:**  
+  Criar uma interface intuitiva para acesso rápido e fácil a dados sobre estabelecimentos e eventos.  
+- **Fomentar o engajamento comunitário:**  
+  Incentivar a comunidade a colaborar, adicionando informações relevantes sobre seus negócios ou eventos.  
+
+### **Alinhamento com os Objetivos de Desenvolvimento Sustentável ([ODS](https://brasil.un.org/pt-br/sdgs))**  
+- **Trabalho decente e crescimento econômico**  
+- **Cidades e comunidades sustentáveis**  
+
+---
+
+## **Setor de Aplicação**
+
+A aplicação é voltada para a cidade de **Martins - RN** e adjacências, atendendo às seguintes áreas:  
+- **Restaurantes e Alimentação:** Divulgação de opções gastronômicas.  
+- **Hospedagem e Imóveis:** Imóveis para locação ou venda.  
+- **Eventos Locais:** Promoção de eventos culturais, sociais e turísticos.  
+
+---
+
+## **Requisitos**
+
+
+:hammer:: Em progresso
+
+:ballot_box_with_check:: Feito
+
+### **Requisitos Funcionais**  
+
+| **Código** | **Título**            | **Descrição**                                                                                 |  
+|:----------:|-----------------------|---------------------------------------------------------------------------------------------|  
+| RF01       | Cadastro de Usuários  | Permitir que moradores e proprietários criem contas na plataforma :ballot_box_with_check:                          |  
+| RF02       | Publicação de Posts   | Possibilitar o cadastro de restaurantes, hospedagens e eventos :ballot_box_with_check:                           |  
+| RF03       | Listagem de Posts     | Exibir posts organizados por categorias :hammer:                                                    |  
+| RF04       | Avaliação             | Permitir que usuários avaliem posts com classificações (estrelas) :hammer:                          |  
+| RF05       | Gerenciamento         | Área administrativa para criar, editar e deletar posts :ballot_box_with_check:                                     |  
+
+### **Requisitos Não Funcionais**  
+
+| **Código** | **Título**          | **Descrição**                                                                                 |  
+|:----------:|--------------------|---------------------------------------------------------------------------------------------|  
+| RNF01      | Usabilidade         | Plataforma deve ser fácil de navegar para usuários de todas as idades :ballot_box_with_check:                      |  
+| RNF02      | Mobilidade          | Design responsivo para acesso via desktop, tablets e smartphones :ballot_box_with_check:                          |  
+| RNF03      | Desempenho          | Suporte a múltiplos usuários simultâneos, com alto desempenho em consultas e atualizações :hammer:  |  
+| RNF04      | Segurança           | Implementação de segurança para proteger os dados dos usuários e estabelecimentos :ballot_box_with_check:           |  
+| RNF05      | Acessibilidade      | Conformidade com diretrizes para garantir acesso a pessoas com deficiência :hammer:                |  
+
+---
+
+## **Implementação**
+
+| **Componente**  | **Ferramenta Utilizada**  |  
+|------------------|---------------------------|  
+| Front-End        | Angular :ballot_box_with_check:                   |  
+| Back-End         | C# (ASP.NET Core)  :ballot_box_with_check:       |  
+| Banco de Dados   | PostgreSQL ou MongoDB :ballot_box_with_check:     |  
+| Cache            | Redis          :hammer:           |  
+
+---
+
+## **Imagens**
+
+### Arquitetura do Sistema  
+<img src="ARCHITECTURE.jpeg" alt="Arquitetura do Sistema" height="500">
+
+### Relacionamento entre Entidades  
+<img src="RELATIONSHIP.jpeg" alt="Relacionamento entre Entidades" height="500">
+
+
+---
+
+## **API**
+
+### **USER**
 
 #### /users 
 response(
@@ -104,9 +142,9 @@ response(
 
 #### /update/user
 request(
-	string Name, 
-	string Email, 
-	string Password
+	string? Name, 
+	string? Email, 
+	string? Password
 ) => body
 
 #### /delete/user
@@ -116,7 +154,7 @@ request(
 
 ---
 
-### HOSTING
+### **HOSTING**
 
 #### /get/hostings
 response(
@@ -193,7 +231,7 @@ request(
 
 ---
 
-### FEEDING
+### **FEEDING**
 
 #### /get/feedings
 response(
@@ -262,7 +300,7 @@ request(
 
 ---
 
-### EVENT
+### **EVENT**
 
 #### /get/events
 response(
@@ -323,7 +361,7 @@ request(
 
 ---
 
-### IMAGE
+### **IMAGE**
 
 #### /upload/user/image
 request(
