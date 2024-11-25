@@ -1,8 +1,10 @@
 section {
-  h2 {
-    margin-top: var(--m-6);
-    margin-bottom: var(--m-6);
-  }
+  margin-top: var(--m-4);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--gap-4);
 
   article {
     display: flex;
@@ -10,53 +12,42 @@ section {
     justify-content: center;
     align-items: start;
 
-    border-bottom: solId 1px var(--color-text-l-3);
+    border-bottom: solid 1px #c9c9c9;
 
-    gap: var(--g-4);
+    padding-bottom: var(--p-3);
 
-    padding: var(--p-5) 0;
+    gap: var(--gap-3);
 
     .img {
-      width: var(--wb-3);
-      height: var(--hb-2);
+      width: 35rem;
+      height: 30rem;
 
-      @media (min-width: 450px) {
-        width: var(--wb-5);
+      object-fit: cover;
+
+      @media (min-width: 650px) {
+        width: 45rem;
       }
 
-      @media (min-width: 700px) {
-        width: var(--wb-3);
+      @media (min-width: 850px) {
+        width: 55rem;
+        height: 45rem;
       }
     }
 
     div {
-      width: var(--wb-3);
+      width: 35rem;
 
-      @media (min-width: 450px) {
-        width: var(--wb-5);
+      @media (min-width: 650px) {
+        width: 45rem;
       }
 
-      @media (min-width: 700px) {
-        width: var(--wb-3);
-      }
-
-      @media (min-width: 800px) {
-        width: var(--wb-5);
-      }
-
-      h3 {
-        font-size: var(--fsh-h5);
-        margin-top: var(--m-3);
-        margin-bottom: var(--m-2);
-
-        @media (min-width: 700px) {
-          margin-bottom: var(--m-3);
-        }
+      @media (min-width: 850px) {
+        width: 55rem;
       }
 
       p {
-        margin-bottom: var(--m-2);
-        text-align: justify;
+        margin-bottom: var(--m-1);
+        text-align: start;
 
         @media (min-width: 700px) {
           margin-bottom: var(--m-3);

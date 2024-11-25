@@ -8,16 +8,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <section>
       <h2>Nossos Serviços</h2>
-      <article Id="arts1">
+      <article id="arts1">
         <figure>
           <img class="img" src="assets/images/pousada.jpg" alt="Pousada" />
           <figcaption>Pousada Rancho da Serra</figcaption>
         </figure>
         <div>
           <h3>Hospedagem, Aluguel ou Compra</h3>
-          <p  class="pInformation">
+          <p>
             A cidade oferece uma variedade de opções de hospedagem, aluguel e
-            compra de imóveis para atender às necessIdades de qualquer família
+            compra de imóveis para atender às necessidades de qualquer família
             ou pessoa. Hotéis, pousadas, casas de temporada e apartamentos,
             garantindo o conforto e a segurança de todos os hóspedes. Existe uma
             grande variedade de opções para todos os gostos e bolsos.
@@ -27,16 +27,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </button>
         </div>
       </article>
-      <article Id="arts2">
+      <article id="arts2">
         <figure>
           <img class="img" src="assets/images/sanduiche.jpg" alt="Refeição" />
           <figcaption>Sanduíche do "Ao Gosto do Chefe"</figcaption>
         </figure>
         <div>
           <h3>Restaurantes e Lanchonetes Locais</h3>
-          <p class="pInformation">
+          <p>
             A cidade oferece uma variedade de opções de restaurantes e
-            lanchonetes para atender às necessIdades de qualquer família ou
+            lanchonetes para atender às necessidades de qualquer família ou
             pessoa. Restaurantes, lanchonetes, bares e padarias, garantindo o
             conforto e a segurança de todos os clientes. Existe uma grande
             variedade de opções para todos os gostos e bolsos.
@@ -46,7 +46,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </button>
         </div>
       </article>
-      <article Id="arts3">
+      <article id="arts3">
         <figure>
           <img
             class="img"
@@ -59,9 +59,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </figure>
         <div>
           <h3>Eventos</h3>
-          <p class="pInformation">
+          <p>
             A cidade oferece uma variedade de opções de eventos para atender às
-            necessIdades de qualquer família ou pessoa. Festivais, shows, feiras
+            necessidades de qualquer família ou pessoa. Festivais, shows, feiras
             e competições, garantindo o conforto e a segurança de todos os
             participantes. Existe uma grande variedade de opções para todos os
             gostos e bolsos.

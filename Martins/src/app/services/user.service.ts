@@ -103,7 +103,7 @@ export class UserService {
     }
   }
 
-  isLoggedIn(): boolean {
+  isLogged(): boolean {
     if (this.isBrowser) {
       return !!this.storageService.getItem('token');
     }

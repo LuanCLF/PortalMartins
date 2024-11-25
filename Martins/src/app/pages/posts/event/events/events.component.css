@@ -1,6 +1,4 @@
-
-@import '../../../../../posts.css';
-
+@import "../../../../../css/posts.css";
 
 #sec2 {
   display: flex;
