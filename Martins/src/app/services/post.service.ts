@@ -52,10 +52,11 @@ export class PostService {
       this.http
         .post<any>(`${this.apiUrl}/upload/user/image`, formData, { headers })
         .subscribe({
-          next: () => {
-            observer.complete();
+          next: (response) => {
+            observer.next(response);
           },
           error: (error) => {
+            console.log(error);
             observer.error({
               conflict: false,
               message: error.message,

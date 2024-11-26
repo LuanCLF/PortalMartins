@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnInit,
 } from '@angular/core';
 import { NavComponent } from '../../components/nav/nav.component';
 import { StorageService } from '../../services/storage.service';
@@ -55,7 +56,7 @@ import { ImageComponent } from './image/image.component';
 
             <ul>
               <li *ngFor="let item of hostList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -93,7 +94,7 @@ import { ImageComponent } from './image/image.component';
 
             <ul>
               <li *ngFor="let item of feedList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -130,7 +131,7 @@ import { ImageComponent } from './image/image.component';
             </div>
             <ul>
               <li *ngFor="let item of eventList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -151,7 +152,7 @@ import { ImageComponent } from './image/image.component';
   styleUrls: ['./profile.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   hostList: IHosting[] = [];
   feedList: IFeeding[] = [];
   eventList: IEvent[] = [];
@@ -182,7 +183,9 @@ export class ProfileComponent {
   }
 
   prevHost() {
-    this.pageHost - 1 === 0 ? (this.pageHost = 1) : this.pageHost--;
+    if (this.pageHost - 1 === 0) this.pageHost = 1;
+    else this.pageHost--;
+
     this.getHostings();
   }
 
@@ -192,7 +195,9 @@ export class ProfileComponent {
   }
 
   prevFood() {
-    this.pageFeed - 1 === 0 ? (this.pageFeed = 1) : this.pageFeed--;
+    if (this.pageFeed - 1 === 0) this.pageFeed = 1;
+    else this.pageFeed--;
+
     this.getFeeding();
   }
 
@@ -202,7 +207,9 @@ export class ProfileComponent {
   }
 
   prevEvent() {
-    this.pageEvent - 1 === 0 ? (this.pageEvent = 1) : this.pageEvent--;
+    if (this.pageEvent - 1 === 0) this.pageEvent = 1;
+    else this.pageEvent--;
+
     this.getEvents();
   }
 

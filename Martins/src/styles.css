@@ -108,6 +108,24 @@ section {
   align-items: center;
 }
 
+label,
+input,
+select,
+option,
+textarea {
+  font-size: var(--font-p);
+}
+
+input,
+select,
+textarea {
+  padding: var(--p-1);
+  border-radius: var(--bdr-1);
+
+  border: none;
+  outline: none;
+}
+
 .customBtn {
   padding: var(--p-1) var(--p-5);
 
@@ -145,14 +163,14 @@ section {
   max-height: 3rem;
 }
 
-/* .btnAct {
-  font-size: var(--fst-h6);
+.btnAct {
+  padding: var(--p-1) var(--p-2);
 }
 
 .iconBtn {
-  background-color: var(--color-btn);
+  background-color: var(--orange-1);
 
-  padding: var(--p-2);
+  padding: var(--p-2) var(--p-2);
   border-radius: var(--bdr-1);
 
   cursor: pointer;
@@ -160,9 +178,14 @@ section {
 
 .btn-post-add-page {
   padding: var(--p-1) var(--p-2);
+}
 
-  height: var(--h-2);
-} */
+.h1Header {
+  background: linear-gradient(170deg, var(--yellow-2), var(--red-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 /* 
 

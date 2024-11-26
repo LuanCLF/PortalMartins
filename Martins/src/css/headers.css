@@ -54,10 +54,7 @@ section {
       h1 {
         margin: var(--m-1) 0 var(--m-4) 0;
 
-        background: linear-gradient(170deg, var(--yellow-2), var(--red-3));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+
       }
 
       p {

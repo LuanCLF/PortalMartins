@@ -20,60 +20,56 @@
   align-items: baseline;
 }
 
+.modal-footer {
+  margin-top: var(--m-2);
+}
+
 .modal-dialog {
   position: relative;
 
   margin: 4% auto;
   padding: var(--p-3);
-  width: 80%;
-  max-width: var(--wb-5);
 
-  background-color: var(--bgc-light-1);
-  color: var(--color-text-d-1);
+  width: 80%;
+
+  background-color: var(--color-light);
+  color: var(--color-dark);
 
   border-radius: var(--bdr-3);
 
-  margin-top: var(--m-8);
+  margin-top: var(--m-5);
+
+  @media (min-width: 650px) {
+    max-width: 55rem;
+  }
 
   .modal-content {
     .modal-header {
-      margin-bottom: var(--m-3);
       text-align: center;
       justify-content: space-around;
       align-items: center;
 
-      h1 {
-        font-size: var(--fsh-h5);
+      h3 {
+        font-size: var(--font-h3);
+        margin-bottom: var(--m-3);
       }
 
       button {
-        font-size: var(--fst-h2);
+        font-size: var(--font-h3);
         font-weight: bold;
         cursor: pointer;
       }
     }
+
     .modal-body {
       form {
         display: flex;
         flex-direction: column;
         align-items: center;
         div {
-          label,
-          input {
-            font-size: var(--fst-h6);
-          }
-
-          input {
-            padding: var(--p-2);
-            border-radius: var(--bdr-1);
-
-            border: none;
-            outline: none;
-
-            width: var(--wb-0);
-            margin-bottom: var(--m-1);
-          }
-
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           label {
             margin-top: var(--m-1);
             margin-bottom: var(--m-1);
@@ -89,6 +85,6 @@
 }
 
 .messageErrorOn {
-  color: var(--color-red-1);
+  color: var(--orange-1);
   margin-bottom: var(--m-2);
 }

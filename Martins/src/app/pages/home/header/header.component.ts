@@ -17,7 +17,7 @@ import { NavComponent } from '../../../components/nav/nav.component';
         />
 
         <div>
-          <h1>MARTINS</h1>
+          <h1 class="h1Header">MARTINS</h1>
           <p>
             Cadastre-se para acompanhar a serra mais fria do alto oeste potiguar
           </p>

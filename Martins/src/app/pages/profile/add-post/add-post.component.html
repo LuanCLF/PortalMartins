@@ -11,6 +11,7 @@
   [class.show]="isModalOpen"
   (click)="onModalClick($event)"
   (keypress)="onModalClick($event)"
+  tabindex="0"
 >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -33,10 +34,10 @@
         <form [formGroup]="hostForm" (ngSubmit)="onSubmit()">
           <div>
             <div>
-              <label for="title">Título:</label>
+              <label for="hostTitle">Título:</label>
               <input
                 type="text"
-                id="title"
+                id="hostTitle"
                 formControlName="title"
                 placeholder="Título do post"
                 required
@@ -46,10 +47,10 @@
               >
             </div>
             <div>
-              <label for="location">Localização:</label>
+              <label for="hostLocation">Localização:</label>
               <input
                 type="text"
-                id="location"
+                id="hostLocation"
                 formControlName="location"
                 placeholder="Cidade-UF"
                 required
@@ -59,10 +60,10 @@
               >
             </div>
             <div>
-              <label for="whatsApp">WhatsApp:</label>
+              <label for="hostWhatsapp">WhatsApp:</label>
               <input
                 type="text"
-                id="whatsApp"
+                id="hostWhatsapp"
                 formControlName="whatsApp"
                 placeholder="Número ou Link"
               />
@@ -71,10 +72,10 @@
               >
             </div>
             <div>
-              <label for="instagram">Instagram:</label>
+              <label for="hostInstagram">Instagram:</label>
               <input
                 type="text"
-                id="instagram"
+                id="hostInstagram"
                 formControlName="instagram"
                 placeholder="@perfil ou Link"
               />
@@ -83,9 +84,9 @@
               >
             </div>
             <div>
-              <label for="description">Descrição:</label>
+              <label for="hostDescription">Descrição:</label>
               <textarea
-                id="description"
+                id="hostDescription"
                 formControlName="description"
                 placeholder="Descrição do post"
               ></textarea>
@@ -175,10 +176,10 @@
         <form [formGroup]="feedForm" (ngSubmit)="onSubmit()">
           <div>
             <div>
-              <label for="title">Título:</label>
+              <label for="feedTitle">Título:</label>
               <input
                 type="text"
-                id="title"
+                id="feedTitle"
                 formControlName="title"
                 placeholder="Título do post"
                 required
@@ -188,10 +189,10 @@
               >
             </div>
             <div>
-              <label for="location">Localização:</label>
+              <label for="feedLocation">Localização:</label>
               <input
                 type="text"
-                id="location"
+                id="feedLocation"
                 formControlName="location"
                 placeholder="Cidade-UF"
                 required
@@ -201,10 +202,10 @@
               >
             </div>
             <div>
-              <label for="whatsApp">WhatsApp:</label>
+              <label for="feedWhatsApp">WhatsApp:</label>
               <input
                 type="text"
-                id="whatsApp"
+                id="feedWhatsApp"
                 formControlName="whatsApp"
                 placeholder="Número ou Link"
               />
@@ -213,10 +214,10 @@
               >
             </div>
             <div>
-              <label for="instagram">Instagram:</label>
+              <label for="feedInstagram">Instagram:</label>
               <input
                 type="text"
-                id="instagram"
+                id="feedInstagram"
                 formControlName="instagram"
                 placeholder="@perfil ou Link"
               />
@@ -225,9 +226,9 @@
               >
             </div>
             <div>
-              <label for="description">Descrição:</label>
+              <label for="feedDescription">Descrição:</label>
               <textarea
-                id="description"
+                id="feedDescription"
                 formControlName="description"
                 placeholder="Descrição do post"
               ></textarea>
@@ -294,10 +295,10 @@
         <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
           <div>
             <div>
-              <label for="title">Título:</label>
+              <label for="eventTitle">Título:</label>
               <input
                 type="text"
-                id="title"
+                id="eventTitle"
                 formControlName="title"
                 placeholder="Título do post"
                 required
@@ -307,10 +308,10 @@
               >
             </div>
             <div>
-              <label for="location">Localização:</label>
+              <label for="eventLocationCity">Localização:</label>
               <input
                 type="text"
-                id="location"
+                id="eventLocationCity"
                 formControlName="location"
                 placeholder="Cidade-UF"
                 required
@@ -320,10 +321,10 @@
               >
             </div>
             <div>
-              <label for="whatsApp">WhatsApp:</label>
+              <label for="eventWhatsApp">WhatsApp:</label>
               <input
                 type="text"
-                id="whatsApp"
+                id="eventWhatsApp"
                 formControlName="whatsApp"
                 placeholder="Número ou Link"
               />
@@ -332,10 +333,10 @@
               >
             </div>
             <div>
-              <label for="instagram">Instagram:</label>
+              <label for="eventInstagram">Instagram:</label>
               <input
                 type="text"
-                id="instagram"
+                id="eventInstagram"
                 formControlName="instagram"
                 placeholder="@perfil ou Link"
               />
@@ -344,9 +345,9 @@
               >
             </div>
             <div>
-              <label for="description">Descrição:</label>
+              <label for="eventDescription">Descrição:</label>
               <textarea
-                id="description"
+                id="eventDescription"
                 formControlName="description"
                 placeholder="Descrição do post"
               ></textarea>

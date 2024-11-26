@@ -209,6 +209,7 @@ export class AddPostComponent {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private validateFields(title: any, location: any, type: any) {
     if (title.value === null || title.invalid || title.value.trim().length === 0)
       this.invalidField('title', true);
