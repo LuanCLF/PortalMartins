@@ -10,7 +10,7 @@ import { IEvent } from '../interfaces/posts/event.';
 export class StorageService {
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private readonly platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 

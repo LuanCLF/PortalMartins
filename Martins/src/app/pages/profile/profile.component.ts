@@ -214,10 +214,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getHostings() {
-    this.postService.getHostings(this.pageHost).subscribe({
+    this.postService.getUserPosts('hosting', this.pageHost).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.hostList = response;
+          this.hostList = response as IHosting[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -233,10 +233,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getFeeding() {
-    this.postService.getFeeding(this.pageFeed).subscribe({
+    this.postService.getUserPosts('feeding', this.pageFeed).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.feedList = response;
+          this.feedList = response as IFeeding[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -252,10 +252,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getEvents() {
-    this.postService.getEvents(this.pageEvent).subscribe({
+    this.postService.getUserPosts('event', this.pageEvent).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.eventList = response;
+          this.eventList = response as IEvent[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -283,9 +283,9 @@ export class ProfileComponent implements OnInit {
 
   deleteHost(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteHostPost(id).subscribe({
+    this.postService.deletePost('hosting',  id).subscribe({
       next: () => {
-        this.hostList = this.hostList.filter((item) => item.id !== id);
+        this.hostList = this.hostList.filter((item) => item.id !== id.toString());
         this.cdr.markForCheck();
       },
       error: (error) => {
@@ -299,9 +299,9 @@ export class ProfileComponent implements OnInit {
 
   deleteFeeding(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteFeedingPost(id).subscribe({
+    this.postService.deletePost('feeding',  id).subscribe({
       next: () => {
-        this.feedList = this.feedList.filter((item) => item.id !== id);
+        this.feedList = this.feedList.filter((item) => item.id !== id.toString());
         this.cdr.markForCheck();
       },
       error: (error) => {
@@ -315,9 +315,9 @@ export class ProfileComponent implements OnInit {
 
   deleteEvent(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteEventPost(id).subscribe({
+    this.postService.deletePost( 'event',  id).subscribe({
       next: () => {
-        this.eventList = this.eventList.filter((item) => item.id !== id);
+        this.eventList = this.eventList.filter((item) => item.id !== id.toString());
         this.cdr.markForCheck();
       },
       error: (error) => {

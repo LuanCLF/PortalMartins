@@ -1,12 +1,8 @@
 main {
   section {
-    @media (min-width: 750px) {
-      margin-top: var(--m-5);
-    }
+    margin-top: 10vh;
 
     h1 {
-      font-size: var(--fsh-h3);
-
       text-align: center;
 
       margin-bottom: var(--m-2);
@@ -14,21 +10,10 @@ main {
 
     h2 {
       margin-top: var(--m-5);
-      font-size: var(--fsh-h4);
       text-align: center;
     }
 
-    h3 {
-      font-size: var(--fsh-h5);
-    }
-
-    p {
-      font-size: var(--fst-h5);
-    }
-
     ul {
-      max-width: var(--wb-9);
-
       margin-top: var(--m-3);
 
       display: flex;
@@ -36,8 +21,7 @@ main {
       align-items: center;
       flex-wrap: wrap;
 
-      gap: var(--g-4);
-
+      gap: var(--gap-4);
 
       li {
         display: flex;
@@ -45,27 +29,32 @@ main {
         justify-content: center;
         flex-wrap: wrap;
 
-        gap: var(--g-3);
+        text-align: center;
 
-        @media (max-width: 363px) {
-          .info {
-            h3,
-            p {
-              text-align: center;
-            }
-          }
-        }
-
-
+        gap: var(--gap-2);
 
         .info {
-          width: var(--wb-1);
+          width: 25rem;
 
           h3 {
             margin-bottom: var(--m-1);
           }
         }
+
+        @media (min-width: 338px) {
+          text-align: start;
+        }
       }
     }
+  }
+}
+
+
+.customBtn {
+  a {
+    display: flex; 
+    flex-direction: row-reverse;
+
+    gap: var(--gap-2);
   }
 }

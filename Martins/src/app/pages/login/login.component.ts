@@ -114,7 +114,7 @@ export class LoginComponent {
       this.submitButton.nativeElement.style.cursor = 'wait';
 
       this.userService.login(user).subscribe({
-        next: (response) => {
+        next: () => {
           this.submitButton.nativeElement.style.cursor = 'pointer';
           this.isSubmitting = false;
           this.loginFailed(false);

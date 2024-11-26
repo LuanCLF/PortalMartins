@@ -64,9 +64,7 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
                   (change)="onFileChange($event)"
                 />
               </div>
-              <span class="messageErrorOff" [id]="getErrorId()"
-                >O upload falhou, tente novamente</span
-              >
+
               <div class="modal-footer">
                 <button
                   class="customBtn btnAct"
@@ -76,6 +74,10 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
                 >
                   Adicionar
                 </button>
+
+                <span class="messageErrorOff" [id]="getErrorId()"
+                  >O upload falhou, tente novamente</span
+                >
               </div>
             </form>
           </div>
@@ -144,6 +146,7 @@ export class ImageComponent {
 
           this.isSubmitImage = false;
           this.submitImageBtn.nativeElement.style.cursor = 'pointer';
+          this.closeModal();
         },
       });
     } else {
@@ -173,10 +176,9 @@ export class ImageComponent {
   }
 
   private imageError(bool: boolean, msg?: string) {
-    const invalidSpan = document.getElementById(`error${this.category}Image`)!;
-    bool
-      ? invalidSpan.classList.add('messageErrorOn')
-      : invalidSpan.classList.remove('messageErrorOn');
+    const invalidSpan = document.getElementById(this.getErrorId())!;
+
+    invalidSpan.style.display = bool ? 'block' : 'none';
 
     invalidSpan.textContent = msg ?? 'O upload falhou, tente novamente';
   }

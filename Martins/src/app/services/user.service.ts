@@ -22,7 +22,7 @@ export class UserService {
 
   constructor(
     private readonly http: HttpClient,
-    @Inject(PLATFORM_ID) private readonly platformId: Object,
+    @Inject(PLATFORM_ID) private readonly platformId: object,
     private readonly storageService: StorageService
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -30,7 +30,7 @@ export class UserService {
 
   create(user: IUserCreateRQ): Observable<void> {
     return new Observable((observer) => {
-      this.http.post<any>(`${this.apiUrl}/create`, user).subscribe({
+      this.http.post<void>(`${this.apiUrl}/create`, user).subscribe({
         next: () => {
           this.router.navigate(['/login']);
           observer.complete();
@@ -48,7 +48,7 @@ export class UserService {
 
   login(user: IUserLoginRQ): Observable<void> {
     return new Observable((observer) => {
-      this.http.post<any>(`${this.apiUrl}/login`, user).subscribe({
+      this.http.post<IUserLoginRP>(`${this.apiUrl}/login`, user).subscribe({
         next: (response: IUserLoginRP) => {
           this.storageService.setItem('token', response.token);
           this.storageService.setItem('name', response.name);
@@ -85,7 +85,7 @@ export class UserService {
 
   update(user: IUserUpdateRQ): Observable<void> {
     return new Observable((observer) => {
-      this.http.put<any>(`${this.apiUrl}/update/user`, user).subscribe({
+      this.http.put<void>(`${this.apiUrl}/update/user`, user).subscribe({
         next: () => {
           this.router.navigate(['/']);
           observer.complete();
@@ -108,9 +108,8 @@ export class UserService {
   }
 
   isLogged(): boolean {
-    if (this.isBrowser) {
-      return !!this.storageService.getItem('token');
-    }
+    if (this.isBrowser) return !!this.storageService.getItem('token');
+
     return false;
   }
 }

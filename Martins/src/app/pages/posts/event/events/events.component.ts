@@ -260,10 +260,10 @@ export class EventsComponent implements OnInit {
   async getEvents() {
     this.isSubmitEvents = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllEvents(this.page).subscribe({
+    this.posts.getAllPosts('event'   ,this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.events = response;
+          this.events = response as IEvent[];
           this.storage.setPost('event', this.events);
         } else {
           this.events = [];

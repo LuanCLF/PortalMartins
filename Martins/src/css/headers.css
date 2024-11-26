@@ -7,7 +7,7 @@ section {
 
   #art1 {
 
-    margin-top: var(--m-5);
+    margin-top: 10vh;
     padding: var(--p-2) var(--p-3);
 
     @media (min-width: 1080px) {

@@ -187,10 +187,10 @@ export class HostingsComponent implements OnInit {
   getHostings() {
     this.isSubmitHosts = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllHostings(this.page).subscribe({
+    this.posts.getAllPosts(  'hosting',this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.hosts = response;
+          this.hosts = response as IHosting[];
           this.storage.setPost('host', this.hosts);
         } else {
           this.hosts = [];

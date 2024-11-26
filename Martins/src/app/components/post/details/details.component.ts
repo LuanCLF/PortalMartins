@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IHosting } from '../../../interfaces/posts/hosting.';
 import { IFeeding } from '../../../interfaces/posts/feeding.';
@@ -246,7 +246,7 @@ import { IEvent } from '../../../interfaces/posts/event.';
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit{
   @Input() host?: IHosting = undefined;
   @Input() feed?: IFeeding = undefined;
   @Input() event?: IEvent = undefined;

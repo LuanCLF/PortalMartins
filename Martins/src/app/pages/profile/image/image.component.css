@@ -84,7 +84,9 @@
   padding: var(--p-2) var(--p-2);
 }
 
-.messageErrorOn {
-  color: var(--orange-1);
-  margin-bottom: var(--m-2);
+.messageErrorOff {
+  color: red;
+  margin-top: var(--m-2);
+
+  display: none;
 }

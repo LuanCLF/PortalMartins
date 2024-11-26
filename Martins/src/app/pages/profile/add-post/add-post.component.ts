@@ -158,6 +158,8 @@ export class AddPostComponent {
   }
 
   onSubmit() {
+    this.createError(this.postType[0].toUpperCase() as 'E' | 'F' | 'H', false);
+
     let title;
     let location;
     let type;
@@ -194,31 +196,44 @@ export class AddPostComponent {
 
     this.postService.addPost(post, this.postType).subscribe({
       next: () => {
-        console.log('Post registration successful', { post });
+        this.isSubmitting = false;
+        this.submitButton.nativeElement.style.cursor = 'pointer';
+        this.closeModal();
       },
       error: (error) => {
         if (error.conflict)
           console.error({ status: error.status }, error.message);
         else console.error('Post registration failed');
-      },
-      complete: () => {
+
+        this.createError(
+          this.postType[0].toUpperCase() as 'E' | 'F' | 'H',
+          true
+        );
+
         this.isSubmitting = false;
         this.submitButton.nativeElement.style.cursor = 'pointer';
-        this.closeModal();
       },
     });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private validateFields(title: any, location: any, type: any) {
-    if (title.value === null || title.invalid || title.value.trim().length === 0)
+    if (
+      title.value === null ||
+      title.invalid ||
+      title.value.trim().length === 0
+    )
       this.invalidField('title', true);
     else this.invalidField('title', false);
-  
-    if (location.value === null || location.invalid || location.value.trim().length === 0)
+
+    if (
+      location.value === null ||
+      location.invalid ||
+      location.value.trim().length === 0
+    )
       this.invalidField('location', true);
     else this.invalidField('location', false);
-  
+
     if (this.postType === 'feeding' && type) {
       if (type.value === null || type.invalid || type.value.trim().length === 0)
         this.invalidField('type', true);
@@ -273,5 +288,11 @@ export class AddPostComponent {
     )!;
 
     invalidSpan.style.display = bool ? 'block' : 'none';
+  }
+
+  private createError(type: 'E' | 'F' | 'H', bool: boolean) {
+    const error = document.getElementById(`createError${type}`)!;
+
+    error.style.display = bool ? 'block' : 'none';
   }
 }

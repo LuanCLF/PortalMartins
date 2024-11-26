@@ -4,7 +4,7 @@ main {
   align-items: center;
   justify-content: center;
 
-  margin: var(--m-5) 0;
+  margin: 5vh 0;
 
   padding: var(--p-5) var(--p-1);
 
@@ -30,7 +30,6 @@ main {
 
     background-color: var(--green-1);
 
-    width: fit-content;
     margin: 0;
 
     border-radius: var(--bdr-2);
