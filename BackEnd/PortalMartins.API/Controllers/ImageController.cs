@@ -50,8 +50,12 @@ namespace PortalMartins.API.Controllers
                 Post? post = await _postRepository.Get(im.Id);
                 if(post == null) return NotFound("Post not found");
 
-                string path = await _image.Upload(file.FileName, buffer, post.Category, im.Id, user.Id);
-                post.AddImage(path);
+                (int code, string msg) = await _image.Upload(file.FileName, buffer, post.Category, im.Id, user.Id);
+                post.AddImage(msg);
+
+                if(code == 409) return Conflict("File already exists");
+                if(code == 500) return StatusCode(500, msg);
+                
 
                 await _postRepository.Update(post);
                 
