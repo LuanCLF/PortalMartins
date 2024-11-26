@@ -36,7 +36,11 @@ export class UserService {
           observer.complete();
         },
         error: (error) => {
-          observer.error({ conflict: false, message: error.error.message });
+          observer.error({
+            conflict: false,
+            message: error.error.message,
+            status: error.status,
+          });
         },
       });
     });

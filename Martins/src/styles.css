@@ -119,6 +119,8 @@ section {
 
   cursor: pointer;
 
+  font-size: var(--font-btn);
+
   &:hover {
     background-color: var(--orange-2);
   }
@@ -202,9 +204,9 @@ section {
 
 .messageErrorOff {
   display: none;
-  font-size: var(--fst-h6);
+  font-size: var(--font-span);
 
-  color: var(--color-error-msg);
+  color: var(--yellow-1);
 }
 .messageErrorOn {
   display: block;

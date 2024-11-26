@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://portalmartinsapi.azurewebsites.net',
+  apiUrl: 'http://localhost:5203',
 };

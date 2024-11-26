@@ -1,4 +1,12 @@
 nav {
+  width: 100%;
+  background-color: var(--color-light);
+  position: fixed;
+  top: 0;
+
+
+  border-bottom: 0.5px solid #c9c9c9;
+
   padding: 0 var(--p-2);
 
   height: 6rem;
