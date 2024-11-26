@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { IEvent } from '../../../../interfaces/posts/event.';
@@ -218,7 +219,7 @@ import { Router } from '@angular/router';
   styleUrl: './events.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit {
   events: IEvent[] = [];
   page: number = 1;
   isSubmitEvents: boolean = false;
