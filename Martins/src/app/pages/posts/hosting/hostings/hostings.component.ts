@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -79,30 +80,30 @@ import { StorageService } from '../../../../services/storage.service';
               </li>
               } @if (host.serviceArea) {
               <li>
+                Área de Serviço
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Área de Serviço
               </li>
               } @if (host.kitchen) {
               <li>
+                Cozinha
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Cozinha
               </li>
               } @if (host.garden) {
               <li>
+                Jardim
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Jardim
               </li>
               }
             </ul>
@@ -143,7 +144,7 @@ import { StorageService } from '../../../../services/storage.service';
   styleUrl: './hostings.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HostingsComponent {
+export class HostingsComponent implements OnInit {
   hosts: IHosting[] = [];
   page: number = 1;
   isSubmitHosts: boolean = false;
