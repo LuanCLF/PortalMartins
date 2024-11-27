@@ -20,14 +20,17 @@
   margin: 4% auto;
   padding: var(--p-3);
   width: 80%;
-  max-width: var(--wb-5);
 
-  background-color: var(--bgc-light-1);
-  color: var(--color-text-d-1);
+  background-color: var(--color-light);
+  color: var(--color-dark);
 
   border-radius: var(--bdr-3);
 
-  margin-top: var(--m-8);
+  margin-top: var(--m-5);
+
+  @media (min-width: 650px) {
+    max-width: 55rem;
+  }
 }
 
 .modal-header,
@@ -36,20 +39,31 @@
   align-items: baseline;
 }
 
+.modal-footer {
+  margin-top: var(--m-3);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--gap-2);
+}
+
 .modal-header {
   margin-bottom: var(--m-3);
   text-align: center;
   justify-content: space-around;
 
-
   h1 {
-    font-size: var(--fsh-h5);
+    font-size: var(--font-h3);
   }
 
   button {
-    font-size: var(--fst-h2);
     font-weight: bold;
     cursor: pointer;
+
+    font-size: var(--font-h3);
+
+    background-color: transparent;
   }
 }
 
@@ -58,42 +72,20 @@
     display: flex;
     flex-direction: column;
 
-    gap: var(--g-5);
-
     div {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
 
-      gap: var(--g-4);
+      gap: var(--gap-3);
 
       div {
         display: flex;
         flex-direction: column;
         align-items: start;
 
-        gap: var(--p-1);
-
-        label,
-        input,
-        select,
-        option,
-        textarea {
-          font-size: var(--fst-h6);
-        }
-
-        input,
-        select,
-        textarea {
-          padding: var(--p-2);
-          border-radius: var(--bdr-1);
-
-          border: none;
-          outline: none;
-
-          width: var(--wb-0);
-        }
+        gap: var(--gap-1);
 
         label {
           margin-top: var(--m-1);
@@ -103,24 +95,33 @@
         input {
           margin-bottom: var(--m-1);
         }
+
+        input,
+        textarea,
+        select {
+          width: 22rem;
+
+          border: 0.1px solid var(--gray-1);
+        }
       }
       .checkboxes {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
 
-        width: var(--wb-0);
+      gap: var(--gap-2);
 
         .checkbox {
           display: flex;
           flex-direction: row;
-          align-items: flex-end;
+          align-items: center;
 
           .checkboxInput {
-            width: var(--w-1);
+            width: fit-content;
+            margin: 0;
           }
         }
       }
     }
   }
 }
+

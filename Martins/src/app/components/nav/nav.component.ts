@@ -8,8 +8,8 @@ import { UserService } from '../../services/user.service';
   imports: [CommonModule],
   template: `
     <nav>
-      <ul Id="acess">
-        <ng-container *ngIf="!loggedIn(); else loggedInTemplate">
+      <ul id="acess">
+        <ng-container *ngIf="!logged(); else loggedInTemplate">
           <li>
             <a href="/login">Login <span></span></a>
           </li>
@@ -27,8 +27,14 @@ import { UserService } from '../../services/user.service';
         </ng-template>
       </ul>
 
-      <div Id="divMenu" (mouseover)="showMenu = true" (mouseout)="hIdeMenu()">
-        <button Id="menu-burger">☰</button>
+      <div
+        id="divMenu"
+        (mouseover)="showMenu = true"
+        (mouseout)="hideMenu()"
+        (focus)="showMenu = true"
+        (blur)="hideMenu()"
+      >
+        <button id="menu-burger">☰</button>
         <ul [class.show]="showMenu">
           <li>
             <a href="/">Página Inicial <span></span></a>
@@ -57,12 +63,12 @@ export class NavComponent {
 
   constructor(private readonly userService: UserService) {}
 
-  hIdeMenu() {
+  hideMenu() {
     setTimeout(() => (this.showMenu = false), 500);
   }
 
-  loggedIn() {
-    return this.userService.isLoggedIn();
+  logged() {
+    return this.userService.isLogged();
   }
 
   logout() {

@@ -10,14 +10,12 @@ import { NavComponent } from '../../../components/nav/nav.component';
     <app-nav></app-nav>
     <section>
       <article id="art1">
-        <figure>
-          <img
-            id="imgMap"
-            class="img headerImg"
-            src="assets/images/maps.png"
-            alt="Imagem da cidade no google maps"
-          />
-        </figure>
+        <img
+          class="img"
+          src="assets/images/maps.png"
+          alt="Imagem da cidade no google maps"
+        />
+
         <div>
           <h1 class="h1Header">MARTINS</h1>
           <p>
@@ -28,43 +26,40 @@ import { NavComponent } from '../../../components/nav/nav.component';
           </button>
         </div>
       </article>
-      <article Id="art2">
+      <article id="art2">
         <ul>
           <li>
-            <img
-              class="icons"
-              src="assets/icons/handbag.svg"
-              alt="icone de mala de viagem"
-            />
             <div>
+              <img
+                class="icons"
+                src="assets/icons/handbag.svg"
+                alt="icone de mala de viagem"
+              />
               <h3>Cidade Turistica</h3>
-              <p>Diversas opções de lazer, cultura e gastronomia</p>
             </div>
+            <p>Diversas opções de lazer, cultura e gastronomia</p>
           </li>
           <li>
-            <img
-              class="icons"
-              src="assets/icons/local.svg"
-              alt="icone de ponteiro de local"
-            />
             <div>
+              <img
+                class="icons"
+                src="assets/icons/local.svg"
+                alt="icone de ponteiro de local"
+              />
               <h3>Localização Incrível</h3>
-              <p>
-                Vistas incríveis e paisagens naturais, com o maior aquapark do
-                RN a 16 minutos da cidade
-              </p>
             </div>
+            <p>Lugares e paisagens incríveis ruante todo o ano</p>
           </li>
           <li>
-            <img
-              class="icons"
-              src="assets/icons/thermometer.svg"
-              alt="icone de termômetro"
-            />
             <div>
+              <img
+                class="icons"
+                src="assets/icons/thermometer.svg"
+                alt="icone de termômetro"
+              />
               <h3>Clima Agradável</h3>
-              <p>Temperaturas amenas e uma cidade arborizada</p>
             </div>
+            <p>Temperaturas amenas e uma cidade arborizada</p>
           </li>
         </ul>
       </article>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IHosting } from '../../../interfaces/posts/hosting.';
 import { IFeeding } from '../../../interfaces/posts/feeding.';
@@ -45,15 +45,15 @@ import { IEvent } from '../../../interfaces/posts/event.';
             } @if (host.serviceArea) {
             <li>
               Área de Serviço
-              <img src="assets/icons/check.svg" alt="Ícone de check" />
+              <img src="assets/icons/check.svg" alt="" />
             </li>
             } @if (host.kitchen) {
             <li>
-              Cozinha <img src="assets/icons/check.svg" alt="Ícone de check" />
+              Cozinha <img src="assets/icons/check.svg" alt="" />
             </li>
             } @if (host.garden) {
             <li>
-              Jardim <img src="assets/icons/check.svg" alt="Ícone de check" />
+              Jardim <img src="assets/icons/check.svg" alt="" />
             </li>
             }
           </ul>
@@ -75,7 +75,7 @@ import { IEvent } from '../../../interfaces/posts/event.';
                 <a href="{{ host.instagram }}"
                   ><img
                     src="assets/icons/instagram.svg"
-                    alt="icone do instagram"
+                    alt="Ícone do instagram"
                 /></a>
               </button>
               } }
@@ -119,16 +119,16 @@ import { IEvent } from '../../../interfaces/posts/event.';
             <li>Tipo: {{ feed.type }}</li>
             } @if (feed.wifi) {
             <li>
-              Wi-fi <img src="assets/icons/check.svg" alt="Ícone de check" />
+              Wi-fi <img src="assets/icons/check.svg" alt="" />
             </li>
             } @if (feed.delivery) {
             <li>
-              Delivery <img src="assets/icons/check.svg" alt="Ícone de check" />
+              Delivery <img src="assets/icons/check.svg" alt="" />
             </li>
             } @if (feed.parking) {
             <li>
               Estacionamento
-              <img src="assets/icons/check.svg" alt="Ícone de check" />
+              <img src="assets/icons/check.svg" alt="" />
             </li>
             }
           </ul>
@@ -212,7 +212,7 @@ import { IEvent } from '../../../interfaces/posts/event.';
               @if (event.phone || event.instagram) { @if (event.phone &&
               event.phone.trim() !== '') {
               <button class="iconBtn">
-                <a href="{{ event.phone }}"
+                <a href="https://wa.me/55{{ event.phone }}"
                   ><img src="assets/icons/whatsapp.svg" alt="Ícone do whatsapp"
                 /></a>
               </button>
@@ -246,7 +246,7 @@ import { IEvent } from '../../../interfaces/posts/event.';
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit{
   @Input() host?: IHosting = undefined;
   @Input() feed?: IFeeding = undefined;
   @Input() event?: IEvent = undefined;

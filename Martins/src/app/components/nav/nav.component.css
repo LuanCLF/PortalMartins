@@ -1,15 +1,15 @@
 nav {
-  a {
-    font-size: var(--fst-h5);
+  width: 100%;
+  background-color: var(--color-light);
+  position: fixed;
+  top: 0;
 
-    color: var(--color-text-d-0);
 
-    &:hover {
-      color: var(--color-orange-0);
-    }
-  }
+  border-bottom: 0.5px solid var(--gray-1);
 
-  padding: var(--p-3) var(--p-5);
+  padding: 0 var(--p-2);
+
+  height: 6rem;
 
   display: flex;
   align-items: center;
@@ -18,14 +18,14 @@ nav {
   @media (min-width: 850px) {
     justify-content: center;
 
-    padding: var(--p-3) var(--p-5);
+    padding: 0 var(--p-5);
   }
 
   div {
     display: flex;
     justify-content: center;
 
-    border-left: 3px solId var(--color-orange-1);
+    border-left: 3px solId var(--orange-1);
     border-style: dashed;
     padding-left: var(--p-5);
 
@@ -37,7 +37,7 @@ nav {
       display: flex;
       align-items: center;
 
-      gap: var(--g-4);
+      gap: var(--gap-3);
 
       @media (max-width: 850px) {
         display: none;
@@ -48,14 +48,17 @@ nav {
         height: max-content;
 
         position: absolute;
-        top: 72px;
-        right: 32px;
+        top: 6rem;
+        right: 2rem;
 
-        background-color: white;
+        gap: var(--gap-3);
+
+        background-color: var(--color-light);
+
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
         transform: scale(1.02);
 
-        border-radius: 0 0 10px 10px;
+        border-radius: 0 0 var(--bdr-2) var(--bdr-2);
 
         padding: var(--p-3) var(--p-3);
       }
@@ -66,20 +69,21 @@ nav {
     }
 
     #menu-burger {
-      display: none;
+      display: block;
 
       width: max-content;
       height: max-content;
 
+      cursor: pointer;
+
       color: var(--green-1);
 
-      background-color: var(--bgc-color-l-1);
+      font-size: 3rem;
 
-      font-size: 30px;
       font-weight: bolder;
 
-      @media (max-width: 850px) {
-        display: block;
+      @media (min-width: 850px) {
+        display: none;
       }
     }
   }
@@ -89,8 +93,7 @@ nav {
   display: flex;
   flex-direction: row;
 
-  gap: var(--g-4);
+  gap: var(--gap-3);
 
   padding-right: var(--p-5);
-  margin-left: var(--m-5);
 }

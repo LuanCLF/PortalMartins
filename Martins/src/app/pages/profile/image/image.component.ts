@@ -25,14 +25,18 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
       type="button"
       class="open-modal-btn customBtn btnAct"
       (click)="openModal()"
+      (keyup.enter)="openModal()"
+      tabindex="0"
     >
-      Add img
+      IMG +
     </button>
 
     <div
       class="modal"
       [class.show]="isModalOpen"
       (click)="onModalClick($event)"
+      tabindex="0"
+      (keyup.enter)="onModalClick($event)"
     >
       <div class="modal-dialog">
         <div class="modal-content">
@@ -40,7 +44,13 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
             <h3 class="modal-title">
               Escolha uma imagem para adicionar ao post
             </h3>
-            <button type="button" class="close-btn" (click)="closeModal()">
+            <button
+              type="button"
+              class="close-btn"
+              (click)="closeModal()"
+              (keyup.enter)="closeModal()"
+              tabindex="0"
+            >
               ×
             </button>
           </div>
@@ -54,9 +64,7 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
                   (change)="onFileChange($event)"
                 />
               </div>
-              <span class="messageErrorOff" [id]="getErrorId()"
-                >O upload falhou, tente novamente</span
-              >
+
               <div class="modal-footer">
                 <button
                   class="customBtn btnAct"
@@ -66,6 +74,10 @@ import { ICreateImage } from '../../../interfaces/posts/post.';
                 >
                   Adicionar
                 </button>
+
+                <span class="messageErrorOff" [id]="getErrorId()"
+                  >O upload falhou, tente novamente</span
+                >
               </div>
             </form>
           </div>
@@ -120,13 +132,17 @@ export class ImageComponent {
 
     if (this.selectedFile) {
       this.postService.addImagePost(uploadImage).subscribe({
-        next: (response) => {
+        next: () => {
+          console.log('Image added');
+
           this.isSubmitImage = false;
           this.submitImageBtn.nativeElement.style.cursor = 'pointer';
           this.closeModal();
         },
         error: (error) => {
-          this.imageError(true);
+          if (error.status === 409)
+            this.imageError(true, 'A imagem já foi adicionada');
+          else this.imageError(true);
 
           this.isSubmitImage = false;
           this.submitImageBtn.nativeElement.style.cursor = 'pointer';
@@ -148,7 +164,7 @@ export class ImageComponent {
     this.cdr.detectChanges();
   }
 
-  onModalClick(event: MouseEvent) {
+  onModalClick(event: Event) {
     if ((event.target as HTMLElement).classList.contains('modal')) {
       this.closeModal();
     }
@@ -158,10 +174,11 @@ export class ImageComponent {
     return `error${this.category}Image`;
   }
 
-  private imageError(bool: boolean) {
-    const invalidSpan = document.getElementById(`error${this.category}Image`)!;
-    bool
-      ? invalidSpan.classList.add('messageErrorOn')
-      : invalidSpan.classList.remove('messageErrorOn');
+  private imageError(bool: boolean, msg?: string) {
+    const invalidSpan = document.getElementById(this.getErrorId())!;
+
+    invalidSpan.style.display = bool ? 'block' : 'none';
+
+    invalidSpan.textContent = msg ?? 'O upload falhou, tente novamente';
   }
 }

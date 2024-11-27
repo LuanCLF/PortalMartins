@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,10 +20,8 @@ import { StorageService } from '../../../../services/storage.service';
     <section id="sec1">
       <h2>Junte-se a nossa comunidade</h2>
       <p>
-        <button class="customBtn">
-          <a link="/cadastro" target="_blank">Cadastre-se</a>
-        </button>
-        para criar posts aqui
+      <button class="customBtn"><a href="/cadastro">Cadastre-se</a></button>
+      para criar posts aqui
       </p>
       <div id="pagesBtn">
         <button
@@ -79,30 +78,30 @@ import { StorageService } from '../../../../services/storage.service';
               </li>
               } @if (host.serviceArea) {
               <li>
+                Área de Serviço
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Área de Serviço
               </li>
               } @if (host.kitchen) {
               <li>
+                Cozinha
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Cozinha
               </li>
               } @if (host.garden) {
               <li>
+                Jardim
                 <img
                   class="icons"
                   src="assets/icons/check.svg"
                   alt="ícone de check"
                 />
-                Jardim
               </li>
               }
             </ul>
@@ -110,7 +109,7 @@ import { StorageService } from '../../../../services/storage.service';
               @if (host.phone || host.instagram) { @if (host.phone &&
               host.phone.trim() !== '') {
               <button>
-                <a href="{{ host.phone }}"
+                <a href="https://wa.me/55{{ host.phone }}"
                   ><img
                     class="iconBtn"
                     src="assets/icons/whatsapp.svg"
@@ -143,7 +142,7 @@ import { StorageService } from '../../../../services/storage.service';
   styleUrl: './hostings.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HostingsComponent {
+export class HostingsComponent implements OnInit {
   hosts: IHosting[] = [];
   page: number = 1;
   isSubmitHosts: boolean = false;
@@ -186,10 +185,10 @@ export class HostingsComponent {
   getHostings() {
     this.isSubmitHosts = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllHostings(this.page).subscribe({
+    this.posts.getAllPosts('hosting', this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.hosts = response;
+          this.hosts = response as IHosting[];
           this.storage.setPost('host', this.hosts);
         } else {
           this.hosts = [];

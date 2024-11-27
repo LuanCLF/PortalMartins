@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -77,7 +78,7 @@ import { StorageService } from '../../../../services/storage.service';
             </button>
             } @if (feed.instagram && feed.instagram.trim() !== '') {
             <button>
-              <a href="{{ feed.instagram }}"
+              <a href="https://wa.me/55{{ feed.instagram }}"
                 ><img
                   class="iconBtn"
                   src="assets/icons/instagram.svg"
@@ -100,7 +101,7 @@ import { StorageService } from '../../../../services/storage.service';
   styleUrl: './establishments.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EstablishmentsComponent {
+export class EstablishmentsComponent implements OnInit {
   feeds: IFeeding[] = [];
   page: number = 1;
   isSubmitFeeds: boolean = false;
@@ -142,10 +143,10 @@ export class EstablishmentsComponent {
   async getfeedings() {
     this.isSubmitFeeds = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllFeedings(this.page).subscribe({
+    this.posts.getAllPosts('feeding', this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.feeds = response;
+          this.feeds = response as IFeeding[];
           this.storage.setPost('feed', this.feeds);
         } else {
           this.feeds = [];

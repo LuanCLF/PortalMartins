@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { IEvent } from '../../../../interfaces/posts/event.';
@@ -18,9 +19,7 @@ import { Router } from '@angular/router';
   template: ` <section id="sec1">
       <h2>Eventos cadastrados</h2>
       <p>
-        <button class="customBtn">
-          <a link="/cadastro" target="_blank">Cadastre-se</a>
-        </button>
+        <button class="customBtn"><a href="/cadastro">Cadastre-se</a></button>
         para criar posts aqui
       </p>
       <div id="pagesBtn">
@@ -79,7 +78,7 @@ import { Router } from '@angular/router';
               @if (event.phone || event.instagram) { @if (event.phone &&
               event.phone.trim() !== '') {
               <button>
-                <a href="{{ event.phone }}"
+                <a href="https://wa.me/55{{ event.phone }}"
                   ><img
                     class="iconBtn"
                     src="assets/icons/whatsapp.svg"
@@ -218,7 +217,7 @@ import { Router } from '@angular/router';
   styleUrl: './events.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit {
   events: IEvent[] = [];
   page: number = 1;
   isSubmitEvents: boolean = false;
@@ -259,10 +258,10 @@ export class EventsComponent {
   async getEvents() {
     this.isSubmitEvents = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllEvents(this.page).subscribe({
+    this.posts.getAllPosts('event', this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.events = response;
+          this.events = response as IEvent[];
           this.storage.setPost('event', this.events);
         } else {
           this.events = [];

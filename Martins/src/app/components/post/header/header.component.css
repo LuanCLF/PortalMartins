@@ -1,12 +1,26 @@
-@import "../../../../headers.css";
+@import "../../../../css/headers.css";
 
 section {
   #art2 {
     ul {
       li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
         span {
-          font-size: var(--fst-h1);
-          font-weight: bold;
+          font-size: var(--font-h2);
+          font-weight: bolder;
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+
+          gap: var(--gap-1);
+          h3 {
+            margin-bottom: var(--m-1);
+          }
         }
       }
     }

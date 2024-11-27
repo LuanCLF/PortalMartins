@@ -63,7 +63,7 @@ export class AddPostComponent {
           this.utils.noWhitespaceValidator,
         ],
       ],
-      whatsApp: ['', [Validators.maxLength(150)]],
+      whatsApp: ['', [Validators.maxLength(11), Validators.minLength(11)]],
       instagram: ['', [Validators.maxLength(150)]],
       description: ['', [Validators.maxLength(250)]],
       bedrooms: ['', Validators.pattern('^[0-9]*$')],
@@ -92,7 +92,7 @@ export class AddPostComponent {
           this.utils.noWhitespaceValidator,
         ],
       ],
-      whatsApp: ['', [Validators.maxLength(150)]],
+      whatsApp: ['', [Validators.maxLength(11), Validators.minLength(11)]],
       instagram: ['', [Validators.maxLength(150)]],
       description: ['', [Validators.maxLength(250)]],
       type: [
@@ -127,7 +127,7 @@ export class AddPostComponent {
           this.utils.noWhitespaceValidator,
         ],
       ],
-      whatsApp: ['', [Validators.maxLength(150)]],
+      whatsApp: ['', [Validators.maxLength(11), Validators.minLength(11)]],
       instagram: ['', [Validators.maxLength(150)]],
       description: ['', [Validators.maxLength(250)]],
       eventDate: ['', [Validators.required]],
@@ -158,27 +158,36 @@ export class AddPostComponent {
   }
 
   onSubmit() {
+    this.createError(this.postType[0].toUpperCase() as 'E' | 'F' | 'H', false);
+
     let title;
     let location;
     let type;
+    let whatsApp;
 
     if (this.postType === 'hosting') {
       title = this.hostForm.get('title')!;
       location = this.hostForm.get('location')!;
+      whatsApp = this.hostForm.get('whatsApp');
     } else if (this.postType === 'event') {
       title = this.eventForm.get('title')!;
       location = this.eventForm.get('location')!;
+      whatsApp = this.eventForm.get('whatsApp');
     } else {
       title = this.feedForm.get('title')!;
       location = this.feedForm.get('location')!;
+      whatsApp = this.feedForm.get('whatsApp');
       type = this.feedForm.get('type')!;
     }
 
-    this.validateFields(title, location, type);
+    this.validateFields(title, location, type, whatsApp);
 
     if (
       title.invalid ||
       location.invalid ||
+      (whatsApp?.value &&
+        whatsApp?.value.toString().trim().length > 0 &&
+        whatsApp?.value.toString().trim().length != 11) ||
       (this.postType === 'feeding' && type?.invalid)
     ) {
       console.error('Formulário contém erros de validação.');
@@ -189,35 +198,61 @@ export class AddPostComponent {
 
     const post = this.createPostObject();
 
+    console.log('post object', post);
+
     this.isSubmitting = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
 
     this.postService.addPost(post, this.postType).subscribe({
       next: () => {
-        console.log('Post registration successful', { post });
+        this.isSubmitting = false;
+        this.submitButton.nativeElement.style.cursor = 'pointer';
+        this.closeModal();
       },
       error: (error) => {
         if (error.conflict)
           console.error({ status: error.status }, error.message);
         else console.error('Post registration failed');
-      },
-      complete: () => {
+
+        this.createError(
+          this.postType[0].toUpperCase() as 'E' | 'F' | 'H',
+          true
+        );
+
         this.isSubmitting = false;
         this.submitButton.nativeElement.style.cursor = 'pointer';
-        this.closeModal();
       },
     });
   }
 
-  private validateFields(title: any, location: any, type: any) {
-    if (title.value === null || title.invalid || title.value.trim().length === 0)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private validateFields(title: any, location: any, type: any, whatsApp?: any) {
+    if (
+      title.value === null ||
+      title.invalid ||
+      title.value.trim().length === 0
+    )
       this.invalidField('title', true);
     else this.invalidField('title', false);
-  
-    if (location.value === null || location.invalid || location.value.trim().length === 0)
+
+    if (
+      location.value === null ||
+      location.invalid ||
+      location.value.trim().length === 0
+    )
       this.invalidField('location', true);
     else this.invalidField('location', false);
-  
+
+    if (
+      whatsApp.value &&
+      ((whatsApp.value.toString().trim().length > 0 &&
+        whatsApp.value.toString().trim().length != 11) ||
+        whatsApp.value === null ||
+        whatsApp.invalid)
+    )
+      this.invalidField('whatsApp', true);
+    else this.invalidField('whatsApp', false);
+
     if (this.postType === 'feeding' && type) {
       if (type.value === null || type.invalid || type.value.trim().length === 0)
         this.invalidField('type', true);
@@ -231,7 +266,7 @@ export class AddPostComponent {
         return {
           title: this.hostForm.get('title')!.value,
           location: this.hostForm.get('location')!.value,
-          phone: this.hostForm.get('whatsApp')!.value,
+          phone: this.hostForm.get('whatsApp')!.value.toString(),
           instagram: this.hostForm.get('instagram')!.value,
           description: this.hostForm.get('description')!.value,
           bedrooms: this.hostForm.get('bedrooms')!.value || 0,
@@ -245,7 +280,7 @@ export class AddPostComponent {
         return {
           title: this.eventForm.get('title')!.value,
           location: this.eventForm.get('location')!.value,
-          phone: this.eventForm.get('whatsApp')!.value,
+          phone: this.eventForm.get('whatsApp')!.value.toString(),
           instagram: this.eventForm.get('instagram')!.value,
           description: this.eventForm.get('description')!.value,
           eventDate: this.eventForm.get('eventDate')!.value,
@@ -255,7 +290,7 @@ export class AddPostComponent {
         return {
           title: this.feedForm.get('title')!.value,
           location: this.feedForm.get('location')!.value,
-          phone: this.feedForm.get('whatsApp')!.value,
+          phone: this.feedForm.get('whatsApp')!.value.toString(),
           instagram: this.feedForm.get('instagram')!.value,
           description: this.feedForm.get('description')!.value,
           type: this.feedForm.get('type')!.value,
@@ -272,5 +307,11 @@ export class AddPostComponent {
     )!;
 
     invalidSpan.style.display = bool ? 'block' : 'none';
+  }
+
+  private createError(type: 'E' | 'F' | 'H', bool: boolean) {
+    const error = document.getElementById(`createError${type}`)!;
+
+    error.style.display = bool ? 'block' : 'none';
   }
 }

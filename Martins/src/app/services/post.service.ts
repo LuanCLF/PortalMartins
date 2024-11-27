@@ -50,10 +50,10 @@ export class PostService {
 
     return new Observable((observer) => {
       this.http
-        .post<any>(`${this.apiUrl}/upload/user/image`, formData, { headers })
+        .post<void>(`${this.apiUrl}/upload/user/image`, formData, { headers })
         .subscribe({
           next: () => {
-            observer.complete();
+            observer.next();
           },
           error: (error) => {
             observer.error({
@@ -78,7 +78,7 @@ export class PostService {
 
     return new Observable((observer) => {
       this.http
-        .delete<any>(`${this.apiUrl}/delete/user/image`, {
+        .delete<void>(`${this.apiUrl}/delete/user/image`, {
           headers,
           body: imageRQ,
         })
@@ -97,171 +97,15 @@ export class PostService {
     });
   }
 
-  getAllHostings(page: number): Observable<IHosting[] | null | string> {
-    return new Observable((observer) => {
-      this.http.get<any>(`${this.apiUrl}/get/hostings?page=${page}`).subscribe({
-        next: (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        error: (error) => {
-          observer.error({
-            conflict: false,
-            message: error.message,
-            status: error.status,
-          });
-        },
-      });
-    });
-  }
-
-  getAllFeedings(page: number): Observable<IFeeding[] | null | string> {
-    return new Observable((observer) => {
-      this.http.get<any>(`${this.apiUrl}/get/feedings?page=${page}`).subscribe({
-        next: (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        error: (error) => {
-          observer.error({
-            conflict: false,
-            message: error.message,
-            status: error.status,
-          });
-        },
-      });
-    });
-  }
-
-  getAllEvents(page: number): Observable<IEvent[] | null | string> {
-    return new Observable((observer) => {
-      this.http.get<any>(`${this.apiUrl}/get/events?page=${page}`).subscribe({
-        next: (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        error: (error) => {
-          observer.error({
-            conflict: false,
-            message: error.message,
-            status: error.status,
-          });
-        },
-      });
-    });
-  }
-
-  getHostings(page?: number): Observable<IHosting[] | null | string> {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .get<any>(`${this.apiUrl}/get/user/hostings?page=${page ? page : 1}`, {
-          headers,
-        })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
-    });
-  }
-
-  getFeeding(page?: number): Observable<IFeeding[] | null | string> {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .get<any>(`${this.apiUrl}/get/user/feedings?page=${page ? page : 1}`, {
-          headers,
-        })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
-    });
-  }
-
-  getEvents(page?: number): Observable<IEvent[] | null | string> {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .get<any>(`${this.apiUrl}/get/user/events?page=${page ? page : 1}`, {
-          headers,
-        })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
-    });
-  }
-
-  addPost(
-    post: ICreateHosting | ICreateFeeding | ICreateEvent,
-    postType: string
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
+  getAllPosts(
+    postType: 'hosting' | 'feeding' | 'event',
+    page: number
+  ): Observable<IHosting[] | IFeeding[] | IEvent[] | null | string> {
     return new Observable((observer) => {
       switch (postType) {
         case 'hosting':
           this.http
-            .post<any>(`${this.apiUrl}/create/user/hosting`, post, { headers })
+            .get<IHosting[]>(`${this.apiUrl}/get/hostings?page=${page}`)
             .subscribe({
               next: (response) => {
                 observer.next(response);
@@ -278,7 +122,7 @@ export class PostService {
           break;
         case 'feeding':
           this.http
-            .post<any>(`${this.apiUrl}/create/user/feeding`, post, { headers })
+            .get<IFeeding[]>(`${this.apiUrl}/get/feedings?page=${page}`)
             .subscribe({
               next: (response) => {
                 observer.next(response);
@@ -295,7 +139,7 @@ export class PostService {
           break;
         case 'event':
           this.http
-            .post<any>(`${this.apiUrl}/create/user/event`, post, { headers })
+            .get<IEvent[]>(`${this.apiUrl}/get/events?page=${page}`)
             .subscribe({
               next: (response) => {
                 observer.next(response);
@@ -314,13 +158,10 @@ export class PostService {
     });
   }
 
-  addHostPost(
-    data: ICreateHosting
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
+  getUserPosts(
+    postType: 'hosting' | 'feeding' | 'event',
+    page: number
+  ): Observable<IHosting[] | IFeeding[] | IEvent[] | null | string> {
     const token = this.storageService.getItem('token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
@@ -330,26 +171,71 @@ export class PostService {
       return new Observable((observer) => observer.next('sem token'));
 
     return new Observable((observer) => {
-      this.http
-        .post<any>(`${this.apiUrl}/create/user/hosting`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+      switch (postType) {
+        case 'hosting':
+          this.http
+            .get<IHosting[]>(`${this.apiUrl}/get/user/hostings?page=${page}`, {
+              headers,
+            })
+            .subscribe({
+              next: (response) => {
+                observer.next(response);
+                observer.complete();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
+          break;
+        case 'feeding':
+          this.http
+            .get<IFeeding[]>(`${this.apiUrl}/get/user/feedings?page=${page}`, {
+              headers,
+            })
+            .subscribe({
+              next: (response) => {
+                observer.next(response);
+                observer.complete();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+        case 'event':
+          this.http
+            .get<IEvent[]>(`${this.apiUrl}/get/user/events?page=${page}`, {
+              headers,
+            })
+            .subscribe({
+              next: (response) => {
+                observer.next(response);
+                observer.complete();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+      }
     });
   }
 
-  addFeedingPost(
-    data: ICreateFeeding
+  addPost(
+    post: ICreateHosting | ICreateFeeding | ICreateEvent,
+    postType: 'hosting' | 'feeding' | 'event'
   ): Observable<
     | { message: string }
     | { conflict: boolean; message: string; status: number }
@@ -364,26 +250,63 @@ export class PostService {
       return new Observable((observer) => observer.next('sem token'));
 
     return new Observable((observer) => {
-      this.http
-        .post<any>(`${this.apiUrl}/create/user/feeding`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+      switch (postType) {
+        case 'hosting':
+          this.http
+            .post<void>(`${this.apiUrl}/create/user/hosting`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                console.log("erro api post", error);
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
+          break;
+        case 'feeding':
+          this.http
+            .post<void>(`${this.apiUrl}/create/user/feeding`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+        case 'event':
+          this.http
+            .post<void>(`${this.apiUrl}/create/user/event`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+      }
     });
   }
 
-  addEventPost(
-    data: ICreateEvent
+  updatePost(
+    post: IUpdateHosting | IUpdateFeeding | IUpdateEvent,
+    postType: 'hosting' | 'feeding' | 'event'
   ): Observable<
     | { message: string }
     | { conflict: boolean; message: string; status: number }
@@ -398,26 +321,62 @@ export class PostService {
       return new Observable((observer) => observer.next('sem token'));
 
     return new Observable((observer) => {
-      this.http
-        .post<any>(`${this.apiUrl}/create/user/event`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+      switch (postType) {
+        case 'hosting':
+          this.http
+            .put<void>(`${this.apiUrl}/update/user/hosting`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
+          break;
+        case 'feeding':
+          this.http
+            .put<void>(`${this.apiUrl}/update/user/feeding`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+        case 'event':
+          this.http
+            .put<void>(`${this.apiUrl}/update/user/event`, post, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
+            });
+          break;
+      }
     });
   }
 
-  updateHostPost(
-    data: IUpdateHosting
+  deletePost(
+    postType: 'hosting' | 'feeding' | 'event',
+    id: string
   ): Observable<
     | { message: string }
     | { conflict: boolean; message: string; status: number }
@@ -432,191 +391,61 @@ export class PostService {
       return new Observable((observer) => observer.next('sem token'));
 
     return new Observable((observer) => {
-      this.http
-        .put<any>(`${this.apiUrl}/update/user/hosting`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+      switch (postType) {
+        case 'hosting':
+          this.http
+            .delete<void>(`${this.apiUrl}/delete/user/hosting/${id}`, {
+              headers,
+            })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                console.log("erro api delete", error);
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
-    });
-  }
-
-  updateFeedingPost(
-    data: IUpdateFeeding
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .put<any>(`${this.apiUrl}/update/user/feeding`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+          break;
+        case 'feeding':
+          this.http
+            .delete<void>(`${this.apiUrl}/delete/user/feeding/${id}`, {
+              headers,
+            })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
-    });
-  }
-
-  updateEventPost(
-    data: IUpdateEvent
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .put<any>(`${this.apiUrl}/update/user/event`, data, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
+          break;
+        case 'event':
+          this.http
+            .delete<void>(`${this.apiUrl}/delete/user/event/${id}`, { headers })
+            .subscribe({
+              next: () => {
+                observer.next();
+              },
+              error: (error) => {
+                observer.error({
+                  conflict: false,
+                  message: error.message,
+                  status: error.status,
+                });
+              },
             });
-          },
-        });
-    });
-  }
-
-  deleteHostPost(
-    Id: string
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .delete<any>(`${this.apiUrl}/delete/user/hosting/${Id}`, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
-    });
-  }
-
-  deleteFeedingPost(
-    Id: string
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .delete<any>(`${this.apiUrl}/delete/user/feeding/${Id}`, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
-    });
-  }
-
-  deleteEventPost(
-    Id: string
-  ): Observable<
-    | { message: string }
-    | { conflict: boolean; message: string; status: number }
-    | string
-  > {
-    const token = this.storageService.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-
-    if (token === null)
-      return new Observable((observer) => observer.next('sem token'));
-
-    return new Observable((observer) => {
-      this.http
-        .delete<any>(`${this.apiUrl}/delete/user/event/${Id}`, { headers })
-        .subscribe({
-          next: (response) => {
-            observer.next(response);
-            observer.complete();
-          },
-          error: (error) => {
-            observer.error({
-              conflict: false,
-              message: error.message,
-              status: error.status,
-            });
-          },
-        });
+          break;
+      }
     });
   }
 }

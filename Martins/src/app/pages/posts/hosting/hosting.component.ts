@@ -15,7 +15,7 @@ import { HeaderComponent } from '../../../components/post/header/header.componen
       image="/assets/images/pousada.jpg"
       imgAlt="Imagem de uma pousada"
       c1Title="Variedade"
-      c1Text="Opções confortáveis para todos os gostos"
+      c1Text="Opções confortáveis para toda a família, com preços acessíveis"
       c2Title="Contato Direto"
       c2Text="Fale diretamente com os proprietários sem intermediários"
       c3Title="Facilidade"

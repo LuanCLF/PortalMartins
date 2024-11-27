@@ -71,8 +71,8 @@ namespace PortalMartins.CORE.Entities
             if (location is not null && (string.IsNullOrWhiteSpace(location) || location.Length > 250))
                 return (true, "Location cannot be longer than 250 characters and cannot be null");
 
-            if (phone is not null && (string.IsNullOrWhiteSpace(phone) || phone.Length > 11))
-                return (true, "Phone cannot be longer than 11 characters and cannot be null");
+            if (phone is not null && (string.IsNullOrWhiteSpace(phone) || phone.Length > 100))
+                return (true, "Phone cannot be longer than 100 characters and cannot be null");
 
             if (instagram is not null && (string.IsNullOrWhiteSpace(instagram) || instagram.Length > 100))
                 return (true, "Instagram cannot be longer than 100 characters and cannot be null");
@@ -113,8 +113,8 @@ namespace PortalMartins.CORE.Entities
         [StringLength(100)]
         [Column("Title")]
         string Title { get; set; }
-
-        [StringLength(11, MinimumLength = 10)]
+        
+        [StringLength(100)]
         [Column("Phone")]
         string Phone { get; set; }
 

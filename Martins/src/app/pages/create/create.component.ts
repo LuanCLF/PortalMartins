@@ -74,23 +74,23 @@ import { IUserCreateRQ } from '../../interfaces/user.';
               type="text"
               id="cameFrom"
               formControlName="cameFrom"
-              placeholder="Pessoa, instagram,  etc"
+              placeholder="Pessoa, instagram, etc"
             />
           </div>
           <div>
-            <label for="whatIsIt">O que é? (opcional)</label>
+            <label for="whatIsIt">O que você é? (opcional)</label>
             <select
               id="whatIsIt"
               formControlName="whatIsIt"
               value="Pessoa"
-              placeholder="O que é?"
+              placeholder="O que você é?"
             >
               <option value="Pessoa">Pessoa</option>
               <option value="Empresa">Empresa</option>
             </select>
           </div>
           <button
-            class="customBtn btnAct"
+            class="customBtn"
             type="submit"
             #submitButton
             [disabled]="isSubmitting"
@@ -185,7 +185,9 @@ export class CreateComponent {
           this.registerFailed(false);
         },
         error: (error) => {
-          if (error.conflict) this.emailInvalid(true, error.message);
+          if (error.status === 409)
+            this.emailInvalid(true, 'Email já cadastrado');
+          else if (error.conflict) this.emailInvalid(true, error.message);
           else console.error('User registration failed');
           this.registerFailed(true);
           this.submitButton.nativeElement.style.cursor = 'pointer';

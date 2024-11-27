@@ -6,9 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: ` <section>
-    <h2 Id="about">Sobre a cIdade</h2>
+    <h2 id="about">Sobre a cIdade</h2>
 
-    <article Id="arta1">
+    <article id="arta1">
       <figure>
         <img
           class="img"
@@ -17,21 +17,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         />
         <figcaption>Pôr do Sol do Diadema</figcaption>
       </figure>
-      <p class="pInformation">
+      <p >
         Localizado no interior do estado do Rio Grande do Norte, Brasil, a
-        aproximadamente 370 km da capital, Natal. ConhecIda como a “Princesa
+        aproximadamente 370 km da capital, Natal. Conhecida como a “Princesa
         Serrana” e “Campos do Jordão do Rio Grande do Norte”, Martins é famosa
         por seu clima agradável, especialmente em contraste com as regiões
         vizinhas.
       </p>
     </article>
 
-    <article Id="arta2">
-      <p class="pInformation">
-        A cIdade é um destino turístico popular, destacando-se pelo turismo de
+    <article id="arta2">
+      <p >
+        A cidade é um destino turístico popular, destacando-se pelo turismo de
         aventura e pela segunda maior caverna de mármore do país, a Casa de
         Pedra, com 100 metros de comprimento. Além disso, Martins realiza um
-        festival gastronômico de rua nos mês julho, consIderado o maior do
+        festival gastronômico de rua nos mês julho, considerado o maior do
         estado. Outro evento cultural importante é a festa da padroeira Nossa
         Senhora da Conceição, que ocorre entre o final de dezembro e o início de
         janeiro.
@@ -70,7 +70,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </ul>
     </article>
 
-    <article Id="arta3">
+    <article id="arta3">
       <figure>
         <img
           class="img"
@@ -79,7 +79,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         />
         <figcaption>Igreja do Rosário</figcaption>
       </figure>
-      <p class="pInformation">
+      <p >
         Martins foi fundada em 1841 e possui uma rica história, com várias
         mudanças de nome ao longo dos anos até se estabelecer como Martins em
         1890, em homenagem a Francisco Martins de Roriz, fundador da Capela de

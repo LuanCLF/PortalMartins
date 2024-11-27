@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnInit,
 } from '@angular/core';
 import { NavComponent } from '../../components/nav/nav.component';
 import { StorageService } from '../../services/storage.service';
@@ -55,7 +56,7 @@ import { ImageComponent } from './image/image.component';
 
             <ul>
               <li *ngFor="let item of hostList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -93,7 +94,7 @@ import { ImageComponent } from './image/image.component';
 
             <ul>
               <li *ngFor="let item of feedList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -130,7 +131,7 @@ import { ImageComponent } from './image/image.component';
             </div>
             <ul>
               <li *ngFor="let item of eventList; let i = index">
-                <h4>Título: {{ item.title }}</h4>
+                <p>Título: {{ item.title }}</p>
                 <div class="divBtn">
                   <button
                     class="iconBtn"
@@ -151,7 +152,7 @@ import { ImageComponent } from './image/image.component';
   styleUrls: ['./profile.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   hostList: IHosting[] = [];
   feedList: IFeeding[] = [];
   eventList: IEvent[] = [];
@@ -182,7 +183,9 @@ export class ProfileComponent {
   }
 
   prevHost() {
-    this.pageHost - 1 === 0 ? (this.pageHost = 1) : this.pageHost--;
+    if (this.pageHost - 1 === 0) this.pageHost = 1;
+    else this.pageHost--;
+
     this.getHostings();
   }
 
@@ -192,7 +195,9 @@ export class ProfileComponent {
   }
 
   prevFood() {
-    this.pageFeed - 1 === 0 ? (this.pageFeed = 1) : this.pageFeed--;
+    if (this.pageFeed - 1 === 0) this.pageFeed = 1;
+    else this.pageFeed--;
+
     this.getFeeding();
   }
 
@@ -202,15 +207,17 @@ export class ProfileComponent {
   }
 
   prevEvent() {
-    this.pageEvent - 1 === 0 ? (this.pageEvent = 1) : this.pageEvent--;
+    if (this.pageEvent - 1 === 0) this.pageEvent = 1;
+    else this.pageEvent--;
+
     this.getEvents();
   }
 
   getHostings() {
-    this.postService.getHostings(this.pageHost).subscribe({
+    this.postService.getUserPosts('hosting', this.pageHost).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.hostList = response;
+          this.hostList = response as IHosting[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -226,10 +233,10 @@ export class ProfileComponent {
   }
 
   getFeeding() {
-    this.postService.getFeeding(this.pageFeed).subscribe({
+    this.postService.getUserPosts('feeding', this.pageFeed).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.feedList = response;
+          this.feedList = response as IFeeding[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -245,10 +252,10 @@ export class ProfileComponent {
   }
 
   getEvents() {
-    this.postService.getEvents(this.pageEvent).subscribe({
+    this.postService.getUserPosts('event', this.pageEvent).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
-          this.eventList = response;
+          this.eventList = response as IEvent[];
           this.cdr.markForCheck();
         } else if (response === 'sem token') {
           this.router.navigate(['/login']);
@@ -272,19 +279,21 @@ export class ProfileComponent {
       button.style.cursor = 'cursor';
       (button as HTMLButtonElement).disabled = false;
     }
+    this.cdr.markForCheck();
   }
 
   deleteHost(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteHostPost(id).subscribe({
+    this.postService.deletePost('hosting', id).subscribe({
       next: () => {
-        this.hostList = this.hostList.filter((item) => item.id !== id);
-        this.cdr.markForCheck();
+        this.hostList = this.hostList.filter(
+          (item) => item.id !== id.toString()
+        );
+        this.btn('deleteBtn' + id, false);
+        this.getHostings();
       },
       error: (error) => {
         console.error('Delete hosting failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -292,15 +301,17 @@ export class ProfileComponent {
 
   deleteFeeding(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteFeedingPost(id).subscribe({
+    this.postService.deletePost('feeding', id).subscribe({
       next: () => {
-        this.feedList = this.feedList.filter((item) => item.id !== id);
+        this.feedList = this.feedList.filter(
+          (item) => item.id !== id.toString()
+        );
         this.cdr.markForCheck();
+        this.btn('deleteBtn' + id, false);
+        this.getFeeding();
       },
       error: (error) => {
         console.error('Delete feeding failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -308,15 +319,17 @@ export class ProfileComponent {
 
   deleteEvent(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deleteEventPost(id).subscribe({
+    this.postService.deletePost('event', id).subscribe({
       next: () => {
-        this.eventList = this.eventList.filter((item) => item.id !== id);
+        this.eventList = this.eventList.filter(
+          (item) => item.id !== id.toString()
+        );
         this.cdr.markForCheck();
+        this.btn('deleteBtn' + id, false);
+        this.getEvents();
       },
       error: (error) => {
         console.error('Delete event failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });

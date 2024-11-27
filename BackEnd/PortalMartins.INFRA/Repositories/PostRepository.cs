@@ -38,7 +38,7 @@ namespace PortalMartins.INFRA.Repositories
         }
         public async Task<List<Hosting>> GetAllH(int? page)
         {
-            return await _context.Hostings.Skip(Skip(page)).Take(10).ToListAsync();
+            return await _context.Hostings.Where(h => h.Active == true).Skip(Skip(page)).Take(10).ToListAsync();
         }
         public async Task<List<Hosting>> GetAllH(Guid? id, int? page)
         {

@@ -5,13 +5,12 @@ using System.Text;
 
 namespace PortalMartins.API.Utilities
 {
-    public sealed class Image(IHttpContextAccessor httpContext, IConfiguration configuration) : IImage
+    public sealed class Image( IConfiguration configuration) : IImage
     {
-        private readonly IHttpContextAccessor _httpContext = httpContext;
         private readonly string _token = configuration["Github:token"]!;
         private readonly string _repo = configuration["Github:repo"]!;
 
-        public async Task<string> Upload(string originalName, byte[] buffer, char category, int postId, Guid userId)
+         public async Task<(int, string)> Upload(string originalName, byte[] buffer, char category, int postId, Guid userId)
         {
             string base64Content = Convert.ToBase64String(buffer);
 
@@ -34,23 +33,22 @@ namespace PortalMartins.API.Utilities
 
             HttpResponseMessage checkIfExist = await client.GetAsync(apiUrl);
 
-            if (checkIfExist.IsSuccessStatusCode) throw new ArgumentException("Uploaded");
+            if (checkIfExist.IsSuccessStatusCode) return (409, "File already exists");
 
             HttpResponseMessage response = await client.PutAsync(apiUrl, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
 
             if (!response.IsSuccessStatusCode)
             {
                 string error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error sending the file: {response.StatusCode}, {error}");
+                return (500, $"Error sending the file: {response.StatusCode}, {error}");
             }
 
             string responseContent = await response.Content.ReadAsStringAsync();
             JsonElement jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseContent);
             string fileUrl = jsonResponse.GetProperty("content").GetProperty("download_url").GetString()!;
 
-            return fileUrl;
+            return (200, fileUrl);
         }
-
         public async Task Delete(string path)
         {
             string apiUrl = $"{_repo}/{path}";
@@ -64,7 +62,7 @@ namespace PortalMartins.API.Utilities
             if (!response.IsSuccessStatusCode)
             {
                 string error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error fetching the file to delete: {response.StatusCode}, {error}");
+                throw new ArgumentException($"Error fetching the file to delete: {response.StatusCode}, {error}");
             }
 
             string responseContent = await response.Content.ReadAsStringAsync();
@@ -88,7 +86,7 @@ namespace PortalMartins.API.Utilities
             if (!response.IsSuccessStatusCode)
             {
                 string error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error deleting the file: {response.StatusCode}, {error}");
+                   throw new ArgumentException($"Error fetching the file to delete: {response.StatusCode}, {error}");
             }
         }
     }

@@ -7,12 +7,8 @@ main {
 
     text-align: center;
 
-    height: 85vh;
-
     h1 {
-      font-size: var(--fsh-h3);
-
-      margin-top: var(--m-3);
+      margin-top: 10vh;
       margin-bottom: var(--m-2);
 
       span {
@@ -21,9 +17,8 @@ main {
     }
 
     p {
-      margin-bottom: var(--m-5);
+      margin-bottom: var(--m-3);
     }
-
     h2 {
       margin-bottom: var(--m-3);
     }
@@ -34,55 +29,76 @@ main {
       align-items: start;
       flex-wrap: wrap;
 
-      gap: var(--g-5);
+      gap: var(--gap-4);
 
       .artPosts {
-        background-color: var(--color-green-1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background-color: var(--green-1);
         border-radius: var(--bdr-2);
         padding: var(--p-3);
 
-        width: var(--wb-3);
-        position: relative;
+        color: var(--color-light);
 
-        color: var(--color-text-l-1);
+        width: 35rem;
+
+        @media (min-width: 550px) {
+          width: 45rem;
+        }
+
+        @media (min-width: 768px) {
+          width: 55rem;
+        }
+
         h3 {
           margin-bottom: var(--m-1);
         }
 
         .divPage {
           display: flex;
-          flex-direction: row;
+          flex-wrap: wrap;
           align-items: center;
-          gap: var(--g-3);
+          gap: var(--gap-2);
 
-          position: relative;
-          top: -25px;
-          right: -65px;
+          margin-bottom: var(--m-4);
 
-          button {
-            font-size: var(--fst-h5);
+          .pageNumber {
+            font-size: 1.6rem;
+            font-weight: 700;
           }
         }
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
         ul {
           display: flex;
           flex-direction: column;
-          gap: var(--g-3);
+          gap: var(--gap-2);
+
           li {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
 
-            gap: var(--g-5);
+            gap: 5rem;
 
-            h4 {
-              font-size: var(--fsh-h7);
+            p {
               word-break: break-all;
+
+              text-align: start;
+
+              width: 10rem;
+
+              margin: 0;
+
+              @media (min-width: 550px) {
+                width: 15rem;
+              }
+
+              @media (min-width: 768px) {
+                width: 20rem;
+              }
             }
 
             .divBtn {
@@ -90,13 +106,9 @@ main {
               flex-direction: row;
               align-items: center;
               justify-content: end;
-              gap: var(--g-2);
+              gap: var(--gap-2);
 
-              width: var(--wb-0);
-
-              button {
-                padding: var(--p-2) var(--p-2);
-              }
+              width: 15rem;
             }
           }
         }
