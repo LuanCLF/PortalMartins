@@ -16,7 +16,7 @@ import { NavComponent } from '../../components/nav/nav.component';
         <ul>
           <li class="liInfo">
             <div>
-              <img src="/assets/icons/chat.svg" alt="ícone de chat" />
+              <img src="/assets/icons/chat.svg" alt="" />
             </div>
             <div class="info">
               <h3>Informações Gerais</h3>
@@ -25,16 +25,16 @@ import { NavComponent } from '../../components/nav/nav.component';
           </li>
           <li class="liInfo">
             <div>
-              <img src="/assets/icons/bug.svg" alt="ícone de bug" />
+              <img src="/assets/icons/bug.svg" alt="" />
             </div>
             <div class="info">
               <h3>Suporte Técnico</h3>
-              <p>Para reportar problemas técnicos ou bugs no projeto</p>
+              <p>Para reportar problemas técnicos ou bugs </p>
             </div>
           </li>
           <li class="liInfo">
             <div>
-              <img src="/assets/icons/partner.svg" alt="ícone de parceria" />
+              <img src="/assets/icons/partner.svg" alt="" />
             </div>
             <div class="info">
               <h3>Parcerias</h3>
