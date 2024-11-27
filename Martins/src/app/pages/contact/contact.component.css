@@ -33,8 +33,21 @@ main {
 
         gap: var(--gap-2);
 
+        div {
+          img {
+            @media (min-width: 769px) {
+              width: 4rem;
+              height: 4rem;
+            }
+          }
+        }
+
         .info {
           width: 25rem;
+
+          @media (min-width: 769px) {
+            width: 30rem;
+          }
 
           h3 {
             margin-bottom: var(--m-1);
@@ -49,10 +62,9 @@ main {
   }
 }
 
-
 .customBtn {
   a {
-    display: flex; 
+    display: flex;
     flex-direction: row-reverse;
 
     gap: var(--gap-2);

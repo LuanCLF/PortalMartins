@@ -10,19 +10,19 @@ section {
   justify-content: center;
   align-items: center;
 
-  margin-top: var(--m-4);
-
   h1,
   p {
-    word-break: break-all;
+    word-break: keep-all;
   }
 
   h1 {
-    font-size: var(--fsh-h5);
+    font-size: var(--font-h2);
 
     text-align: center;
 
-    margin-bottom: var(--m-3);
+    margin-bottom: var(--m-5);
+
+    max-width: 55rem;
   }
 
   .art1 {
@@ -31,29 +31,43 @@ section {
     justify-content: center;
     align-items: center;
 
-    gap: var(--g-4);
+    gap: var(--gap-2);
 
-    .imgBig {
-      width: var(--wb-3);
-      height: var(--hb-2);
+    div {
+      img {
+        width: 35rem;
+        height: 30rem;
 
-      @media(min-width: 800px) {
-        width: var(--wb-6);
-        height: var(--hb-5);
+        @media (min-width: 450px) {
+          width: 40rem;
+        }
+
+        @media (min-width: 600px) {
+          width: 50rem;
+          height: 40rem;
+        }
       }
     }
 
     .artDetails {
       margin-top: var(--m-2);
 
-      max-width: var(--wb-3);
+      max-width: 35rem;
+
+      @media (min-width: 450px) {
+        max-width: 40rem;
+      }
+
+      @media (min-width: 600px) {
+        max-width: 50rem;
+      }
 
       ul {
         display: flex;
         flex-wrap: wrap;
         justify-content: start;
 
-        gap: var(--g-3);
+        gap: var(--gap-2);
 
         margin-bottom: var(--m-2);
 
@@ -63,9 +77,9 @@ section {
           align-items: center;
           justify-content: center;
 
-          gap: var(--g-2);
+          gap: var(--gap-1);
 
-          font-size: var(--fst-h6);
+          font-size: var(--font-p);
         }
       }
       .spanDate {
@@ -76,11 +90,11 @@ section {
         justify-content: space-between;
         align-items: center;
 
-        gap: var(--g-3);
+        gap: var(--gap-2);
 
         span {
           display: flex;
-          gap: var(--g-2);
+          gap: var(--gap-2);
 
           .iconBtn {
             padding: var(--p-1);
@@ -100,7 +114,7 @@ section {
 
     h3 {
       margin-top: var(--m-4);
-      margin-bottom:  var(--m-3);
+      margin-bottom: var(--m-3);
     }
 
     ul {
@@ -109,13 +123,16 @@ section {
       justify-content: center;
       align-items: center;
 
-      gap: var(--g-4);
+      gap: var(--gap-3);
 
       li {
         .img {
-          @media (min-width: 800px) {
-            width: var(--wb-4);
-            height: var(--hb-3);
+          width: 30rem;
+          height: 25rem;
+
+          @media (min-width: 900px) {
+            width: 40rem;
+            height: 30rem;
           }
         }
       }

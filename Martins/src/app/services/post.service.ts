@@ -259,6 +259,7 @@ export class PostService {
                 observer.next();
               },
               error: (error) => {
+                console.log("erro api post", error);
                 observer.error({
                   conflict: false,
                   message: error.message,
@@ -401,6 +402,7 @@ export class PostService {
                 observer.next();
               },
               error: (error) => {
+                console.log("erro api delete", error);
                 observer.error({
                   conflict: false,
                   message: error.message,

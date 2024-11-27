@@ -20,10 +20,8 @@ import { StorageService } from '../../../../services/storage.service';
     <section id="sec1">
       <h2>Junte-se a nossa comunidade</h2>
       <p>
-        <button class="customBtn">
-          <a link="/cadastro" target="_blank">Cadastre-se</a>
-        </button>
-        para criar posts aqui
+      <button class="customBtn"><a href="/cadastro">Cadastre-se</a></button>
+      para criar posts aqui
       </p>
       <div id="pagesBtn">
         <button
@@ -111,7 +109,7 @@ import { StorageService } from '../../../../services/storage.service';
               @if (host.phone || host.instagram) { @if (host.phone &&
               host.phone.trim() !== '') {
               <button>
-                <a href="{{ host.phone }}"
+                <a href="https://wa.me/55{{ host.phone }}"
                   ><img
                     class="iconBtn"
                     src="assets/icons/whatsapp.svg"
@@ -187,7 +185,7 @@ export class HostingsComponent implements OnInit {
   getHostings() {
     this.isSubmitHosts = true;
     this.submitButton.nativeElement.style.cursor = 'wait';
-    this.posts.getAllPosts(  'hosting',this.page).subscribe({
+    this.posts.getAllPosts('hosting', this.page).subscribe({
       next: (response) => {
         if (Array.isArray(response)) {
           this.hosts = response as IHosting[];
