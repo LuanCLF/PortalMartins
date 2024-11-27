@@ -78,7 +78,7 @@ import { StorageService } from '../../../../services/storage.service';
             </button>
             } @if (feed.instagram && feed.instagram.trim() !== '') {
             <button>
-              <a href="{{ feed.instagram }}"
+              <a href="https://wa.me/55{{ feed.instagram }}"
                 ><img
                   class="iconBtn"
                   src="assets/icons/instagram.svg"

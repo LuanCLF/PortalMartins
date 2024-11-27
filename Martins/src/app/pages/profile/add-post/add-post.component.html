@@ -60,15 +60,15 @@
               >
             </div>
             <div>
-              <label for="hostWhatsapp">WhatsApp:</label>
+              <label for="hostWhatsApp">WhatsApp:</label>
               <input
-                type="text"
-                id="hostWhatsapp"
+                type="number"
+                id="hostWhatsApp"
                 formControlName="whatsApp"
-                placeholder="Número ou Link"
+                placeholder="84922445577"
               />
               <span class="messageErrorOff" id="invalidhostingwhatsapp"
-                >Max 150 letras</span
+                >DDD + Telefone, 11 caracteres</span
               >
             </div>
             <div>
@@ -170,8 +170,9 @@
             >
               Salvar
             </button>
-            <span id="createErrorH" class="messageErrorOff">O cadasto falhou, tente novamente</span>
-
+            <span id="createErrorH" class="messageErrorOff"
+              >O cadasto falhou, tente novamente</span
+            >
           </div>
         </form>
         } @if(postType === "feeding") {
@@ -209,10 +210,10 @@
                 type="text"
                 id="feedWhatsApp"
                 formControlName="whatsApp"
-                placeholder="Número ou Link"
+                placeholder="84922445577"
               />
               <span class="messageErrorOff" id="invalidfeedingwhatsapp"
-                >Max 150 letras</span
+                >DDD + Telefone, 11 caracteres</span
               >
             </div>
             <div>
@@ -291,8 +292,9 @@
             >
               Salvar
             </button>
-            <span id="createErrorF" class="messageErrorOff">O cadasto falhou, tente novamente</span>
-
+            <span id="createErrorF" class="messageErrorOff"
+              >O cadasto falhou, tente novamente</span
+            >
           </div>
         </form>
         } @if(postType === "event") {
@@ -330,10 +332,10 @@
                 type="text"
                 id="eventWhatsApp"
                 formControlName="whatsApp"
-                placeholder="Número ou Link"
+                placeholder="84922445577"
               />
               <span class="messageErrorOff" id="invalideventwhatsapp"
-                >Max 150 letras</span
+                >DDD + Telefone, 11 caracteres</span
               >
             </div>
             <div>
@@ -388,11 +390,12 @@
             >
               Salvar
             </button>
-            <span id="createErrorE" class="messageErrorOff">O cadasto falhou, tente novamente</span>
+            <span id="createErrorE" class="messageErrorOff"
+              >O cadasto falhou, tente novamente</span
+            >
           </div>
         </form>
         }
-       
       </div>
     </div>
   </div>

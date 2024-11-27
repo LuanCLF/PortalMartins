@@ -279,19 +279,21 @@ export class ProfileComponent implements OnInit {
       button.style.cursor = 'cursor';
       (button as HTMLButtonElement).disabled = false;
     }
+    this.cdr.markForCheck();
   }
 
   deleteHost(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deletePost('hosting',  id).subscribe({
+    this.postService.deletePost('hosting', id).subscribe({
       next: () => {
-        this.hostList = this.hostList.filter((item) => item.id !== id.toString());
-        this.cdr.markForCheck();
+        this.hostList = this.hostList.filter(
+          (item) => item.id !== id.toString()
+        );
+        this.btn('deleteBtn' + id, false);
+        this.getHostings();
       },
       error: (error) => {
         console.error('Delete hosting failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -299,15 +301,17 @@ export class ProfileComponent implements OnInit {
 
   deleteFeeding(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deletePost('feeding',  id).subscribe({
+    this.postService.deletePost('feeding', id).subscribe({
       next: () => {
-        this.feedList = this.feedList.filter((item) => item.id !== id.toString());
+        this.feedList = this.feedList.filter(
+          (item) => item.id !== id.toString()
+        );
         this.cdr.markForCheck();
+        this.btn('deleteBtn' + id, false);
+        this.getFeeding();
       },
       error: (error) => {
         console.error('Delete feeding failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -315,15 +319,17 @@ export class ProfileComponent implements OnInit {
 
   deleteEvent(id: string) {
     this.btn('deleteBtn' + id, true);
-    this.postService.deletePost( 'event',  id).subscribe({
+    this.postService.deletePost('event', id).subscribe({
       next: () => {
-        this.eventList = this.eventList.filter((item) => item.id !== id.toString());
+        this.eventList = this.eventList.filter(
+          (item) => item.id !== id.toString()
+        );
         this.cdr.markForCheck();
+        this.btn('deleteBtn' + id, false);
+        this.getEvents();
       },
       error: (error) => {
         console.error('Delete event failed', error);
-      },
-      complete: () => {
         this.btn('deleteBtn' + id, false);
       },
     });

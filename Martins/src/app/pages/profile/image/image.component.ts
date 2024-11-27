@@ -146,7 +146,6 @@ export class ImageComponent {
 
           this.isSubmitImage = false;
           this.submitImageBtn.nativeElement.style.cursor = 'pointer';
-          this.closeModal();
         },
       });
     } else {
