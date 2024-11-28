@@ -75,7 +75,6 @@ export class UserService {
               status: 401,
             });
           } else {
-            console.error('Register failed', error);
             observer.error({ conflict: false, message: 'login failed' });
           }
         },
@@ -90,8 +89,7 @@ export class UserService {
           this.router.navigate(['/']);
           observer.complete();
         },
-        error: (error) => {
-          console.error('Update failed', error);
+        error: () => {
           observer.error({ conflict: false, message: 'update failed' });
         },
       });

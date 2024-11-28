@@ -187,18 +187,15 @@ export class AddPostComponent {
       location.invalid ||
       (whatsApp?.value &&
         whatsApp?.value.toString().trim().length > 0 &&
-        whatsApp?.value.toString().trim().length != 11) ||
+        whatsApp?.value.toString().trim().length !== 11) ||
       (this.postType === 'feeding' && type?.invalid)
     ) {
-      console.error('Formulário contém erros de validação.');
       this.isSubmitting = false;
       this.submitButton.nativeElement.style.cursor = 'pointer';
       return;
     }
 
     const post = this.createPostObject();
-
-    console.log('post object', post);
 
     this.isSubmitting = true;
     this.submitButton.nativeElement.style.cursor = 'wait';

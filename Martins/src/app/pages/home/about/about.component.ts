@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: ` <section>
-    <h2 id="about">Sobre a cIdade</h2>
+    <h2 id="about">Sobre a cidade</h2>
 
     <article id="arta1">
       <figure>
@@ -17,7 +17,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         />
         <figcaption>Pôr do Sol do Diadema</figcaption>
       </figure>
-      <p >
+      <p>
         Localizado no interior do estado do Rio Grande do Norte, Brasil, a
         aproximadamente 370 km da capital, Natal. Conhecida como a “Princesa
         Serrana” e “Campos do Jordão do Rio Grande do Norte”, Martins é famosa
@@ -27,7 +27,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </article>
 
     <article id="arta2">
-      <p >
+      <p>
         A cidade é um destino turístico popular, destacando-se pelo turismo de
         aventura e pela segunda maior caverna de mármore do país, a Casa de
         Pedra, com 100 metros de comprimento. Além disso, Martins realiza um
@@ -79,7 +79,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         />
         <figcaption>Igreja do Rosário</figcaption>
       </figure>
-      <p >
+      <p>
         Martins foi fundada em 1841 e possui uma rica história, com várias
         mudanças de nome ao longo dos anos até se estabelecer como Martins em
         1890, em homenagem a Francisco Martins de Roriz, fundador da Capela de

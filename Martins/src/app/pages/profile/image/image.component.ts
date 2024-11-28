@@ -133,8 +133,6 @@ export class ImageComponent {
     if (this.selectedFile) {
       this.postService.addImagePost(uploadImage).subscribe({
         next: () => {
-          console.log('Image added');
-
           this.isSubmitImage = false;
           this.submitImageBtn.nativeElement.style.cursor = 'pointer';
           this.closeModal();
