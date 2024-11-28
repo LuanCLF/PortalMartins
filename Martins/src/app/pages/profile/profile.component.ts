@@ -244,8 +244,7 @@ export class ProfileComponent implements OnInit {
           this.feedList = [];
         }
       },
-      error: (error) => {
-        console.error('Get feeding failed', error);
+      error: () => {
         this.router.navigate(['/login']);
       },
     });
@@ -263,8 +262,7 @@ export class ProfileComponent implements OnInit {
           this.eventList = [];
         }
       },
-      error: (error) => {
-        console.error('Get events failed', error);
+      error: () => {
         this.router.navigate(['/login']);
       },
     });
@@ -292,8 +290,7 @@ export class ProfileComponent implements OnInit {
         this.btn('deleteBtn' + id, false);
         this.getHostings();
       },
-      error: (error) => {
-        console.error('Delete hosting failed', error);
+      error: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -310,8 +307,7 @@ export class ProfileComponent implements OnInit {
         this.btn('deleteBtn' + id, false);
         this.getFeeding();
       },
-      error: (error) => {
-        console.error('Delete feeding failed', error);
+      error: () => {
         this.btn('deleteBtn' + id, false);
       },
     });
@@ -328,8 +324,7 @@ export class ProfileComponent implements OnInit {
         this.btn('deleteBtn' + id, false);
         this.getEvents();
       },
-      error: (error) => {
-        console.error('Delete event failed', error);
+      error: () => {
         this.btn('deleteBtn' + id, false);
       },
     });

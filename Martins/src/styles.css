@@ -188,44 +188,6 @@ textarea {
   background-clip: text;
 }
 
-/* 
-
-.pInformation {
-  line-height: var(--lh-2);
-  font-size: var(--fst-h4);
-}
-
-
-.headerImg {
-  border-radius: 25% 10%;
-
-  width: 40rem;
-  height: max-content;
-
-  /* @media (min-width: 420px) {
-    width: var(--wb-4);
-  }
-
-  @media (min-width: 520px) {
-    width: var(--wb-6);
-  }
-
-  @media (min-width: 650px) {
-    width: var(--wb-8);
-  }
-
-  @media (min-width: 800px) {
-    margin-top: var(--m-5);
-  }
-
-  @media (min-width: 905px) {
-    width: var(--wb-7);
-  }
-
-  @media (min-width: 1200px) {
-    width: 5rem;
-  } */
-
 .messageErrorOff {
   display: none;
   font-size: var(--font-span);

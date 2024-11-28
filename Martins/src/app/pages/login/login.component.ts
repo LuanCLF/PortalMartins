@@ -125,7 +125,6 @@ export class LoginComponent {
             else if (error.status === 401)
               this.passwordInvalid(true, error.message);
           }
-          console.error('Login failed', error);
           this.loginFailed(true);
           this.submitButton.nativeElement.style.cursor = 'pointer';
           this.isSubmitting = false;
